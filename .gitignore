@@ -1,0 +1,36 @@
+# Env / secrets
+.env
+.env.local
+.env.production
+.deploy-info
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# Node / Next
+node_modules/
+.next/
+out/
+.turbo/
+*.log
+npm-debug.log*
+yarn-error.log*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Docker
+*.local.yml
+
+# SSH keys — на всякий случай, чтобы не утекли
+*.pem
+id_*
+id_*.pub
