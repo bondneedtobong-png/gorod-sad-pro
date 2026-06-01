@@ -81,9 +81,11 @@ export async function POST(req: Request) {
       headers: {
         "content-type": "application/json",
         authorization: `Bearer ${apiKey}`,
-        // OpenRouter рекомендует указывать источник:
+        // OpenRouter рекомендует указывать источник.
+        // ВАЖНО: значения HTTP-заголовков должны быть ASCII/Latin-1 — без кириллицы,
+        // иначе fetch бросает «invalid header value».
         "HTTP-Referer": process.env.OPENROUTER_SITE_URL || "https://gorod-sad.pro",
-        "X-Title": "Город-сад",
+        "X-Title": "Gorod-Sad",
       },
       body: JSON.stringify({ model, messages, temperature: 0.6, max_tokens: 600 }),
     });
@@ -105,7 +107,12 @@ export async function POST(req: Request) {
         ? data.choices[0].message.content.trim()
         : FALLBACK_REPLY;
     return NextResponse.json({ reply, model: data?.model ?? model });
-  } catch {
-    return NextResponse.json({ reply: FALLBACK_REPLY, model, error: "exception" });
+  } catch (e) {
+    return NextResponse.json({
+      reply: FALLBACK_REPLY,
+      model,
+      error: "exception",
+      detail: String(e instanceof Error ? e.message : e).slice(0, 300),
+    });
   }
 }
