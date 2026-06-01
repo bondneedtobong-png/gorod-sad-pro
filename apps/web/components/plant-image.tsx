@@ -1,0 +1,69 @@
+"use client";
+
+import { Leaf } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
+
+import { cn } from "@/lib/utils";
+
+/**
+ * Фото растения через next/image с изящным fallback.
+ * Пока фото нет — показывается палитровая заглушка (градиент + лист + имя),
+ * а не «битая картинка». Как только файл появится в public/media/plants/
+ * под именем из поля image — он отрисуется автоматически (onError → fallback).
+ *
+ * TODO: заменить на реальные фото в public/media/plants/<slug>.jpg
+ */
+
+interface Props {
+  src?: string | null;
+  /** имя растения — для alt и подписи на заглушке */
+  alt: string;
+  className?: string;
+  sizes?: string;
+  priority?: boolean;
+}
+
+export function PlantImage({
+  src,
+  alt,
+  className,
+  sizes = "(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw",
+  priority = false,
+}: Props) {
+  const [failed, setFailed] = useState(false);
+  const showImage = Boolean(src) && !failed;
+
+  return (
+    <div className={cn("relative overflow-hidden bg-forest-100", className)}>
+      {showImage ? (
+        <Image
+          src={src as string}
+          alt={alt}
+          fill
+          sizes={sizes}
+          priority={priority}
+          className="object-cover"
+          onError={() => setFailed(true)}
+        />
+      ) : (
+        <div className="absolute inset-0 bg-gradient-to-br from-forest-300 via-forest-100 to-wheat-300">
+          <div
+            aria-hidden
+            className="absolute inset-0 opacity-60"
+            style={{
+              backgroundImage:
+                "radial-gradient(ellipse 60% 50% at 30% 20%, rgba(255,255,255,0.5), transparent 60%), radial-gradient(ellipse 50% 50% at 80% 90%, rgba(95,132,102,0.35), transparent 60%)",
+            }}
+          />
+          <div className="absolute inset-0 grid place-items-center">
+            <Leaf className="h-10 w-10 text-forest-600/40" strokeWidth={1.6} />
+          </div>
+          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-forest-900/35 to-transparent p-3">
+            <span className="font-display text-sm text-cream drop-shadow">{alt}</span>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}

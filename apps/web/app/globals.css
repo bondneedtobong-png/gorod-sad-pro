@@ -5,17 +5,29 @@
 @layer base {
   html,
   body {
-    @apply bg-forest-900 text-cream antialiased;
+    @apply bg-canvas text-forest-800 antialiased;
     min-height: 100%;
+  }
+  ::selection {
+    background: rgba(217, 199, 122, 0.55);
+    color: #15281a;
   }
 }
 
 @layer utilities {
-  /* Тонкая «листва» — декоративные пятна по углам секций.
-     Реализована как radial-gradient, чтобы не тащить картинки. */
+  /* Тонкая «листва» — мягкие пятна по углам секций. */
   .leaf-frame {
     background-image:
-      radial-gradient(ellipse 200px 280px at 0% 0%, rgba(95, 132, 102, 0.18), transparent 70%),
-      radial-gradient(ellipse 200px 280px at 100% 100%, rgba(95, 132, 102, 0.14), transparent 70%);
+      radial-gradient(ellipse 220px 300px at 0% 0%, rgba(95, 132, 102, 0.22), transparent 70%),
+      radial-gradient(ellipse 220px 300px at 100% 100%, rgba(217, 199, 122, 0.18), transparent 70%);
+  }
+  /* Акцент-«маркер» под словом (вместо курсива) — фирменная деталь. */
+  .accent-underline {
+    background-image: linear-gradient(transparent 60%, rgba(217, 199, 122, 0.55) 0);
+    background-repeat: no-repeat;
+    padding: 0 0.06em;
+  }
+  .text-balance {
+    text-wrap: balance;
   }
 }
