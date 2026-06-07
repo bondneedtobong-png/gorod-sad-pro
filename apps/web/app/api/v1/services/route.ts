@@ -1,11 +1,13 @@
 import { NextResponse } from "next/server";
 
-import { SERVICES } from "@/lib/services-data";
+import { getServices } from "@/lib/content";
+
+export const dynamic = "force-dynamic";
 
 /**
- * GET /api/v1/services — список услуг.
- * Работает на Vercel serverless без FastAPI (данные из lib/services-data).
+ * GET /api/v1/services — список услуг из БД (с откатом на статику).
  */
 export async function GET() {
-  return NextResponse.json({ items: SERVICES, count: SERVICES.length });
+  const items = await getServices();
+  return NextResponse.json({ items, count: items.length });
 }

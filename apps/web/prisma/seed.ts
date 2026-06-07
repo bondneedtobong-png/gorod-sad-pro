@@ -9,7 +9,10 @@ import bcrypt from "bcryptjs";
 import { PLANTS } from "../lib/plants-data";
 import { SERVICES } from "../lib/services-data";
 
-const prisma = new PrismaClient();
+// Сидируем через прямое (не-pooled) подключение, чтобы не упираться в PgBouncer.
+const prisma = new PrismaClient({
+  datasources: { db: { url: process.env.DIRECT_URL || process.env.DATABASE_URL } },
+});
 
 async function main() {
   // --- Растения ---

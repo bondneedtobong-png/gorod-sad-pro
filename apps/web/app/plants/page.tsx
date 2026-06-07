@@ -6,6 +6,7 @@ import { Reveal } from "@/components/reveal";
 import { SectionLabel } from "@/components/section-label";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { getPlants } from "@/lib/content";
 import { BACKGROUNDS } from "@/lib/media";
 
 export const metadata: Metadata = {
@@ -14,7 +15,11 @@ export const metadata: Metadata = {
     "Растения, которые мы любим и используем в проектах: хвойные, кустарники, деревья и многолетники для средней полосы. Поиск и фильтры по категории, сезону и зимостойкости.",
 };
 
-export default function PlantsPage() {
+// ISR: подтягивать правки из БД (админка) без полного ребилда.
+export const revalidate = 120;
+
+export default async function PlantsPage() {
+  const plants = await getPlants();
   return (
     <main className="relative">
       <SiteHeader />
@@ -46,7 +51,7 @@ export default function PlantsPage() {
       {/* Каталог */}
       <section className="py-14 lg:py-16">
         <div className="container">
-          <PlantsCatalog />
+          <PlantsCatalog plants={plants} />
         </div>
       </section>
 

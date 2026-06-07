@@ -1,10 +1,13 @@
 import { NextResponse } from "next/server";
 
-import { computeEstimate } from "@/lib/services-data";
+import { getService } from "@/lib/content";
+import { estimateFromService } from "@/lib/services-data";
+
+export const dynamic = "force-dynamic";
 
 /**
  * POST /api/v1/calculator/estimate — предварительная стоимость услуги.
- * Логика идентична бэкенду; цифры совпадают с конструктором сада.
+ * Тарифы берутся из БД (с откатом на статику); цифры совпадают с конструктором.
  */
 export async function POST(req: Request) {
   let body: { service?: string; area_m2?: unknown; full_cycle?: unknown };
@@ -14,14 +17,15 @@ export async function POST(req: Request) {
     return NextResponse.json({ detail: "bad_json" }, { status: 400 });
   }
 
-  const result = computeEstimate({
-    service: String(body.service ?? ""),
-    area_m2: Number(body.area_m2) || 0,
-    full_cycle: Boolean(body.full_cycle),
-  });
-
-  if (!result) {
+  const service = await getService(String(body.service ?? ""));
+  if (!service) {
     return NextResponse.json({ detail: "unknown_service" }, { status: 400 });
   }
+
+  const result = estimateFromService(
+    service,
+    Number(body.area_m2) || 0,
+    Boolean(body.full_cycle),
+  );
   return NextResponse.json(result);
 }

@@ -8,7 +8,7 @@ import { Reveal } from "@/components/reveal";
 import { SectionLabel } from "@/components/section-label";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { fetchService } from "@/lib/api";
+import { getService } from "@/lib/content";
 
 const ALL_SLUGS = [
   "landscape-design",
@@ -93,9 +93,10 @@ const FAQ: Record<string, { q: string; a: string }[]> = {
 export async function generateStaticParams() {
   return ALL_SLUGS.map((slug) => ({ slug }));
 }
+export const revalidate = 120;
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const service = await fetchService(params.slug);
+  const service = await getService(params.slug);
   if (!service) return { title: "Услуга не найдена — Город-сад" };
   return {
     title: `${service.title} — Город-сад`,
@@ -104,7 +105,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 export default async function ServicePage({ params }: { params: { slug: string } }) {
-  const service = await fetchService(params.slug);
+  const service = await getService(params.slug);
   if (!service) notFound();
 
   const steps = STEPS[params.slug] ?? [];

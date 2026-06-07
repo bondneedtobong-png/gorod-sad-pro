@@ -17,18 +17,21 @@ import { Reveal } from "@/components/reveal";
 import { SectionLabel } from "@/components/section-label";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { getPlantBySlug, getSimilarPlants, PLANTS } from "@/lib/plants-data";
+import { getPlant, getSimilarPlants } from "@/lib/content";
+import { PLANTS } from "@/lib/plants-data";
 
+// Предрендерим известные slug'и; новые (добавленные в админке) — по запросу.
 export function generateStaticParams() {
   return PLANTS.map((p) => ({ slug: p.slug }));
 }
+export const revalidate = 120;
 
 export async function generateMetadata({
   params,
 }: {
   params: { slug: string };
 }): Promise<Metadata> {
-  const plant = getPlantBySlug(params.slug);
+  const plant = await getPlant(params.slug);
   if (!plant) return { title: "Растение не найдено — Город-сад" };
   return {
     title: `${plant.name} — энциклопедия растений · Город-сад`,
@@ -36,11 +39,11 @@ export async function generateMetadata({
   };
 }
 
-export default function PlantPage({ params }: { params: { slug: string } }) {
-  const plant = getPlantBySlug(params.slug);
+export default async function PlantPage({ params }: { params: { slug: string } }) {
+  const plant = await getPlant(params.slug);
   if (!plant) notFound();
 
-  const similar = getSimilarPlants(plant);
+  const similar = await getSimilarPlants(plant);
   const specs = [
     { Icon: Sprout, label: "Категория", value: plant.category },
     { Icon: Sun, label: "Освещение", value: plant.light.join(" / ") },

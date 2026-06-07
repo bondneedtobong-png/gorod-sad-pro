@@ -6,11 +6,7 @@ import { useMemo, useState } from "react";
 
 import { PlantImage } from "@/components/plant-image";
 import { Reveal } from "@/components/reveal";
-import {
-  PLANT_CATEGORIES,
-  PLANTS,
-  type Plant,
-} from "@/lib/plants-data";
+import { type Plant } from "@/lib/plants-data";
 import { cn } from "@/lib/utils";
 
 /**
@@ -45,7 +41,11 @@ function Pill({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function PlantsCatalog() {
+export function PlantsCatalog({ plants }: { plants: Plant[] }) {
+  const categories = useMemo(
+    () => Array.from(new Set(plants.map((p) => p.category))),
+    [plants],
+  );
   const [query, setQuery] = useState("");
   const [cats, setCats] = useState<Set<string>>(new Set());
   const [features, setFeatures] = useState<Set<string>>(new Set());
@@ -58,7 +58,7 @@ export function PlantsCatalog() {
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return PLANTS.filter((p) => {
+    return plants.filter((p) => {
       if (q && !`${p.name} ${p.latin}`.toLowerCase().includes(q)) return false;
       if (cats.size && !cats.has(p.category)) return false;
       if (features.size) {
@@ -69,7 +69,7 @@ export function PlantsCatalog() {
       }
       return true;
     });
-  }, [query, cats, features]);
+  }, [plants, query, cats, features]);
 
   const hasFilters = query.trim() !== "" || cats.size > 0 || features.size > 0;
   const reset = () => {
@@ -99,7 +99,7 @@ export function PlantsCatalog() {
           <span className="mr-1 inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.18em] text-forest-500">
             <SlidersHorizontal className="h-3.5 w-3.5" /> Категория
           </span>
-          {PLANT_CATEGORIES.map((c) => (
+          {categories.map((c) => (
             <FilterChip
               key={c}
               active={cats.has(c)}
@@ -137,7 +137,7 @@ export function PlantsCatalog() {
       {/* Счётчик */}
       <div className="mb-5 text-sm text-forest-600">
         Найдено: <span className="font-semibold text-forest-800">{filtered.length}</span>{" "}
-        из {PLANTS.length}
+        из {plants.length}
       </div>
 
       {/* Сетка */}
@@ -171,7 +171,7 @@ export function PlantsCatalog() {
           <div className="font-display text-2xl text-forest-700">Ничего не найдено</div>
           <p className="mx-auto mt-2 max-w-sm text-sm text-forest-600">
             Попробуйте смягчить фильтры или изменить запрос — в каталоге пока{" "}
-            {PLANTS.length} растений, и он растёт.
+            {plants.length} растений, и он растёт.
           </p>
           {hasFilters && (
             <button

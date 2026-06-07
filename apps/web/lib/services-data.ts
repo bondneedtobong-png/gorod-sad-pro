@@ -90,22 +90,24 @@ export function getServiceBySlug(slug: string): Service | null {
  *   при комплексе работ — скидка 30%.
  * Возвращает ту же форму EstimateResponse, что ждёт фронт (lib/api.ts).
  */
-export function computeEstimate(req: EstimateRequest): EstimateResponse | null {
-  const service = getServiceBySlug(req.service);
-  if (!service) return null;
-
-  const area = Number.isFinite(req.area_m2) ? Math.max(0, req.area_m2) : 0;
+/** Чистый расчёт по объекту услуги (источник — статика ИЛИ БД). */
+export function estimateFromService(
+  service: Service,
+  areaM2: number,
+  fullCycle = false,
+): EstimateResponse {
+  const area = Number.isFinite(areaM2) ? Math.max(0, areaM2) : 0;
   const base = Math.max(service.min_rub, Math.floor(area * service.rate_per_m2));
 
   let total = base;
   let discount = 0;
-  if (req.full_cycle) {
+  if (fullCycle) {
     discount = Math.floor(total * 0.3);
     total -= discount;
   }
 
   return {
-    service: req.service,
+    service: service.slug,
     service_title: service.title,
     unit: service.unit,
     area_m2: area,
@@ -115,4 +117,10 @@ export function computeEstimate(req: EstimateRequest): EstimateResponse | null {
     total_rub: total,
     note: "Окончательная стоимость уточняется после выезда специалиста (бесплатно).",
   };
+}
+
+export function computeEstimate(req: EstimateRequest): EstimateResponse | null {
+  const service = getServiceBySlug(req.service);
+  if (!service) return null;
+  return estimateFromService(service, req.area_m2, req.full_cycle);
 }
