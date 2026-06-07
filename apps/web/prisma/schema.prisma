@@ -1,0 +1,174 @@
+// Город-сад — схема БД (Prisma + Postgres/Neon).
+// Включает модели контента (Plant, Service), CRM (Deal), кабинета
+// (SavedProject, Favorite, ConsentLog) и таблицы Auth.js (User/Account/Session/...).
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  // directUrl — прямое (не-pooled) подключение для миграций (Neon).
+  // Если отдельной строки нет — можно указать ту же, что и DATABASE_URL.
+  directUrl = env("DIRECT_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum DealStatus {
+  NEW
+  IN_PROGRESS
+  DONE
+  CANCELLED
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  passwordHash  String? // null для OAuth-пользователей
+  phone         String?
+  role          Role      @default(USER)
+  vkId          String?   @unique
+  createdAt     DateTime  @default(now())
+
+  accounts      Account[]
+  sessions      Session[]
+  deals         Deal[]
+  savedProjects SavedProject[]
+  favorites     Favorite[]
+  consents      ConsentLog[]
+}
+
+model Plant {
+  id             String     @id @default(cuid())
+  slug           String     @unique
+  name           String
+  latin          String
+  category       String
+  light          String[]
+  care           String
+  hardinessZone  String
+  minZone        Int
+  season         String
+  bloom          String[]
+  winterInterest Boolean    @default(false)
+  height         String
+  short          String
+  description    String
+  uses           String
+  image          String
+  tags           String[]
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+  favorites      Favorite[]
+}
+
+model Service {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  tagline     String
+  description String
+  ratePerM2   Int
+  minRub      Int
+  unit        String
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Deal {
+  id           String     @id @default(cuid())
+  userId       String?
+  user         User?      @relation(fields: [userId], references: [id], onDelete: SetNull)
+  serviceSlug  String?
+  title        String
+  message      String?
+  contactName  String
+  contactPhone String
+  status       DealStatus @default(NEW)
+  adminNote    String?
+  estimateRub  Int?
+  createdAt    DateTime   @default(now())
+}
+
+model SavedProject {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name        String
+  payload     Json
+  estimateRub Int?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Favorite {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  plantId   String
+  plant     Plant    @relation(fields: [plantId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([userId, plantId])
+}
+
+model ConsentLog {
+  id               String   @id @default(cuid())
+  userId           String?
+  user             User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  analyticsConsent Boolean  @default(false)
+  createdAt        DateTime @default(now())
+}
+
+// ---- Auth.js (NextAuth v5) ----
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model PasswordResetToken {
+  id        String   @id @default(cuid())
+  email     String
+  token     String   @unique
+  expires   DateTime
+  createdAt DateTime @default(now())
+}

@@ -1,4 +1,4 @@
-import type { EstimateRequest, EstimateResponse, Service } from "@/lib/api";
+import type { EstimateRequest, EstimateResponse, Service } from "./api";
 
 /**
  * Данные услуг — единый источник правды для фронта без FastAPI.
