@@ -7,6 +7,7 @@ import { BeforeAfter } from "@/components/before-after";
 import { CountUp } from "@/components/count-up";
 import { DayNightScene } from "@/components/day-night-scene";
 import { GrassField } from "@/components/grass-field";
+import { LeadForm } from "@/components/lead-form";
 import { Parallax } from "@/components/parallax";
 import { PhotoBackdrop } from "@/components/photo-backdrop";
 import { PlantImage } from "@/components/plant-image";
@@ -395,6 +396,25 @@ export default function HomePage() {
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ===== Заявка ===== */}
+      <section className="border-b border-forest-200/70 py-20">
+        <div className="container">
+          <Reveal className="mb-8 max-w-2xl">
+            <SectionLabel>Заявка</SectionLabel>
+            <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-forest-900 lg:text-5xl">
+              Оставьте заявку
+            </h2>
+            <p className="mt-3 text-forest-700/80">
+              Перезвоним, бесплатно проконсультируем и предложим выезд на замер.
+              Если вы вошли в аккаунт — заявка появится в личном кабинете.
+            </p>
+          </Reveal>
+          <Reveal>
+            <LeadForm className="mx-auto max-w-2xl" />
+          </Reveal>
         </div>
       </section>
 

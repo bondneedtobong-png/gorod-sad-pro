@@ -12,6 +12,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { AskAiButton } from "@/components/ask-ai-button";
+import { FavoriteButton } from "@/components/favorite-button";
 import { PlantImage } from "@/components/plant-image";
 import { Reveal } from "@/components/reveal";
 import { SectionLabel } from "@/components/section-label";
@@ -102,8 +103,9 @@ export default async function PlantPage({ params }: { params: { slug: string } }
                 ))}
               </div>
             )}
-            <div className="mt-6">
+            <div className="mt-6 flex flex-wrap gap-3">
               <AskAiButton plantName={plant.name} />
+              <FavoriteButton slug={plant.slug} />
             </div>
           </Reveal>
         </div>
