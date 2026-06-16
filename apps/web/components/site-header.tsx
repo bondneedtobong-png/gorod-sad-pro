@@ -2,6 +2,7 @@ import { Phone } from "lucide-react";
 import Link from "next/link";
 
 import { BrandMark } from "@/components/brand-mark";
+import { HeaderUser } from "@/components/header-user";
 
 const NAV = [
   { href: "/#services", label: "Услуги" },
@@ -45,13 +46,16 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <a
-          href="tel:+79370388344"
-          className="hidden items-center gap-2 rounded-full bg-wheat-500 px-4 py-2 text-sm font-medium text-forest-900 shadow-wheat-glow transition hover:bg-wheat-400 sm:flex"
-        >
-          <Phone className="h-4 w-4" strokeWidth={2} />
-          8-937-038-83-44
-        </a>
+        <div className="flex items-center gap-2 sm:gap-3">
+          <a
+            href="tel:+79370388344"
+            className="hidden items-center gap-2 rounded-full border border-forest-300 px-4 py-2 text-sm font-medium text-forest-800 transition hover:border-wheat-600 hover:text-wheat-700 lg:flex"
+          >
+            <Phone className="h-4 w-4" strokeWidth={2} />
+            8-937-038-83-44
+          </a>
+          <HeaderUser />
+        </div>
       </div>
     </header>
   );

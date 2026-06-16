@@ -19,7 +19,13 @@ import {
   SERVICES as STATIC_SERVICES,
 } from "@/lib/services-data";
 
-const hasDb = () => Boolean(process.env.DATABASE_URL);
+// БД используем во время выполнения (runtime/ISR), но НЕ во время сборки:
+// на билде десятки страниц генерятся параллельно и упираются в пул Neon
+// (таймауты). На сборке отдаём статику — мгновенно; свежие данные из БД
+// подтянутся при первом запросе через ISR (revalidate).
+const hasDb = () =>
+  Boolean(process.env.DATABASE_URL) &&
+  process.env.NEXT_PHASE !== "phase-production-build";
 
 async function getPrisma() {
   const { prisma } = await import("@/lib/prisma");

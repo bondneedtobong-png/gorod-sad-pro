@@ -3,6 +3,7 @@ import { Golos_Text, Spectral } from "next/font/google";
 
 import { AiChatWidget } from "@/components/ai-chat-widget";
 import { CursorGlow } from "@/components/cursor-glow";
+import { Providers } from "@/components/providers";
 import { SeasonBadge } from "@/components/season-badge";
 
 import "./globals.css";
@@ -43,10 +44,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ru" className={`${golos.variable} ${spectral.variable}`}>
       <body className="min-h-screen font-sans">
-        <CursorGlow />
-        {children}
-        <SeasonBadge />
-        <AiChatWidget />
+        <Providers>
+          <CursorGlow />
+          {children}
+          <SeasonBadge />
+          <AiChatWidget />
+        </Providers>
       </body>
     </html>
   );
