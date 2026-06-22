@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 
 /**
- * Тонкий тёплый блик за курсором. Только на устройствах с pointer:fine.
+ * Тонкий бирюзовый блик за курсором. Только на устройствах с pointer:fine.
  * Минимум перерасхода — позиционируется через transform без ререндеров.
  */
 export function CursorGlow() {
@@ -36,7 +36,7 @@ export function CursorGlow() {
       className="pointer-events-none fixed left-0 top-0 -z-10 h-[400px] w-[400px] rounded-full opacity-30 blur-3xl"
       style={{
         background:
-          "radial-gradient(circle, rgba(217, 199, 122, 0.35) 0%, rgba(217, 199, 122, 0.1) 30%, transparent 70%)",
+          "radial-gradient(circle, rgba(46, 230, 205, 0.30) 0%, rgba(46, 230, 205, 0.08) 30%, transparent 70%)",
       }}
     />
   );

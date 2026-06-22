@@ -21,8 +21,8 @@ export function DangerZone() {
 
   return (
     <div>
-      <h2 className="font-display text-xl font-semibold text-forest-900">Удаление аккаунта</h2>
-      <p className="mt-1.5 text-sm leading-relaxed text-forest-600">
+      <h2 className="font-display text-xl font-semibold text-mist">Удаление аккаунта</h2>
+      <p className="mt-1.5 text-sm leading-relaxed text-mist/60">
         Аккаунт и связанные данные (профиль, избранное, сохранённые проекты) будут
         удалены безвозвратно. Заявки сохранятся у бюро, но без привязки к вам.
       </p>
@@ -30,7 +30,7 @@ export function DangerZone() {
         <button
           type="button"
           onClick={() => setConfirming(true)}
-          className="mt-4 inline-flex items-center gap-2 rounded-full border border-red-300 px-5 py-2.5 text-sm font-medium text-red-700 transition hover:bg-red-50"
+          className="mt-4 inline-flex items-center gap-2 rounded-full border border-red-400/50 px-5 py-2.5 text-sm font-medium text-red-300 transition hover:bg-red-500/10"
         >
           Удалить аккаунт
         </button>
@@ -48,7 +48,7 @@ export function DangerZone() {
             type="button"
             onClick={() => setConfirming(false)}
             disabled={busy}
-            className="text-sm text-forest-600 hover:text-forest-900"
+            className="text-sm text-mist/60 hover:text-mist"
           >
             Отмена
           </button>

@@ -25,11 +25,11 @@ export function ForgotForm() {
   if (sent) {
     return (
       <div className="space-y-4">
-        <p className="text-sm leading-relaxed text-forest-700">
+        <p className="text-sm leading-relaxed text-mist/72">
           Если аккаунт с таким email существует, мы отправили письмо со ссылкой для
           сброса пароля. Проверьте почту и папку «Спам» — ссылка действует 1 час.
         </p>
-        <Link href="/login" className="inline-block text-sm font-medium text-wheat-700 hover:underline">
+        <Link href="/login" className="inline-block text-sm font-medium text-aqua-400 hover:underline">
           ← Вернуться ко входу
         </Link>
       </div>
@@ -39,7 +39,7 @@ export function ForgotForm() {
   return (
     <form onSubmit={onSubmit} className="space-y-4">
       <div>
-        <label className="mb-1.5 block text-sm font-medium text-forest-700" htmlFor="email">Email</label>
+        <label className="mb-1.5 block text-sm font-medium text-mist/80" htmlFor="email">Email</label>
         <input
           id="email"
           type="email"
@@ -54,9 +54,9 @@ export function ForgotForm() {
       <button type="submit" disabled={busy} className={authPrimaryBtn}>
         {busy ? "Отправляем…" : "Отправить ссылку"}
       </button>
-      <p className="text-center text-sm text-forest-600">
+      <p className="text-center text-sm text-mist/60">
         Вспомнили?{" "}
-        <Link href="/login" className="font-medium text-wheat-700 hover:underline">Войти</Link>
+        <Link href="/login" className="font-medium text-aqua-400 hover:underline">Войти</Link>
       </p>
     </form>
   );

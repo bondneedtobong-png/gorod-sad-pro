@@ -5,29 +5,63 @@
 @layer base {
   html,
   body {
-    @apply bg-canvas text-forest-800 antialiased;
+    @apply bg-pine-950 text-mist antialiased;
     min-height: 100%;
   }
   ::selection {
-    background: rgba(217, 199, 122, 0.55);
-    color: #15281a;
+    background: rgba(46, 230, 205, 0.3);
+    color: #eaf5f0;
   }
 }
 
 @layer utilities {
-  /* Тонкая «листва» — мягкие пятна по углам секций. */
+  /* Бирюзовый ореол-свечение за акцентными элементами/знаком. */
+  .aqua-aura {
+    background-image: radial-gradient(circle, rgba(46, 230, 205, 0.32), transparent 62%);
+  }
+  /* Тонкая «листва» — мягкие бирюзово-хвойные пятна по углам секций. */
   .leaf-frame {
     background-image:
-      radial-gradient(ellipse 220px 300px at 0% 0%, rgba(95, 132, 102, 0.22), transparent 70%),
-      radial-gradient(ellipse 220px 300px at 100% 100%, rgba(217, 199, 122, 0.18), transparent 70%);
+      radial-gradient(ellipse 220px 300px at 0% 0%, rgba(46, 230, 205, 0.12), transparent 70%),
+      radial-gradient(ellipse 220px 300px at 100% 100%, rgba(16, 128, 95, 0.18), transparent 70%);
   }
-  /* Акцент-«маркер» под словом (вместо курсива) — фирменная деталь. */
+  /* Акцент-«маркер» под словом (вместо курсива) — фирменная бирюзовая деталь. */
   .accent-underline {
-    background-image: linear-gradient(transparent 60%, rgba(217, 199, 122, 0.55) 0);
+    background-image: linear-gradient(transparent 60%, rgba(46, 230, 205, 0.4) 0);
     background-repeat: no-repeat;
     padding: 0 0.06em;
   }
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+/* Анимация «прорисовки» логотипа (см. components/brand-mark.tsx). */
+@keyframes gs-draw {
+  from {
+    stroke-dashoffset: 560;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes gs-breathe {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.04) rotate(-1deg);
+  }
+}
+@keyframes gs-glow {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.12);
   }
 }

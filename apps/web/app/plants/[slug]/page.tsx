@@ -62,14 +62,14 @@ export default async function PlantPage({ params }: { params: { slug: string } }
       <div className="container pt-8">
         <Link
           href="/plants"
-          className="inline-flex items-center gap-1.5 text-sm text-forest-600 transition hover:text-wheat-700"
+          className="inline-flex items-center gap-1.5 text-sm text-mist/60 transition hover:text-aqua-400"
         >
           <ArrowLeft className="h-3.5 w-3.5" /> Вся энциклопедия
         </Link>
       </div>
 
       {/* Hero растения */}
-      <section className="border-b border-forest-200/70 py-10 lg:py-14">
+      <section className="border-b border-white/[0.07] py-10 lg:py-14">
         <div className="container grid gap-8 lg:grid-cols-2 lg:items-center">
           <Reveal>
             <PlantImage
@@ -77,18 +77,18 @@ export default async function PlantPage({ params }: { params: { slug: string } }
               alt={plant.name}
               priority
               sizes="(max-width: 1024px) 100vw, 50vw"
-              className="aspect-[4/3] rounded-3xl shadow-card ring-1 ring-forest-200/70"
+              className="aspect-[4/3] rounded-3xl shadow-card ring-1 ring-white/10"
             />
           </Reveal>
           <Reveal delay={120}>
             <SectionLabel>{plant.category}</SectionLabel>
-            <h1 className="mt-3 font-display text-4xl font-semibold leading-tight tracking-tight text-forest-900 lg:text-5xl">
+            <h1 className="mt-3 font-display text-4xl font-semibold leading-tight tracking-tight text-mist lg:text-5xl">
               {plant.name}
             </h1>
-            <div className="mt-1 font-display text-xl italic text-forest-500">
+            <div className="mt-1 font-display text-xl italic text-mist/45">
               {plant.latin}
             </div>
-            <p className="mt-4 max-w-xl text-lg leading-relaxed text-forest-700/85">
+            <p className="mt-4 max-w-xl text-lg leading-relaxed text-mist/72">
               {plant.short}
             </p>
             {plant.tags && plant.tags.length > 0 && (
@@ -96,7 +96,7 @@ export default async function PlantPage({ params }: { params: { slug: string } }
                 {plant.tags.map((t) => (
                   <span
                     key={t}
-                    className="rounded-full bg-forest-50 px-3 py-1 text-xs text-forest-600 ring-1 ring-forest-200/70"
+                    className="rounded-full bg-white/5 px-3 py-1 text-xs text-mist/70 ring-1 ring-white/10"
                   >
                     {t}
                   </span>
@@ -112,23 +112,23 @@ export default async function PlantPage({ params }: { params: { slug: string } }
       </section>
 
       {/* Характеристики */}
-      <section className="border-b border-forest-200/70 py-12">
+      <section className="border-b border-white/[0.07] py-12">
         <div className="container">
           <Reveal>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {specs.map(({ Icon, label, value }) => (
                 <div
                   key={label}
-                  className="flex items-start gap-3 rounded-2xl bg-paper p-5 ring-1 ring-forest-200/70"
+                  className="flex items-start gap-3 rounded-2xl bg-white/[0.04] p-5 ring-1 ring-white/10"
                 >
-                  <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-wheat-500/15 ring-1 ring-wheat-500/30">
-                    <Icon className="h-5 w-5 text-wheat-700" strokeWidth={1.8} />
+                  <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-aqua-400/15 ring-1 ring-aqua-400/30">
+                    <Icon className="h-5 w-5 text-aqua-400" strokeWidth={1.8} />
                   </div>
                   <div>
-                    <div className="text-xs uppercase tracking-[0.16em] text-forest-500">
+                    <div className="text-xs uppercase tracking-[0.16em] text-mist/50">
                       {label}
                     </div>
-                    <div className="mt-0.5 font-medium text-forest-800">{value}</div>
+                    <div className="mt-0.5 font-medium text-mist">{value}</div>
                   </div>
                 </div>
               ))}
@@ -138,23 +138,23 @@ export default async function PlantPage({ params }: { params: { slug: string } }
       </section>
 
       {/* Описание + где применяем */}
-      <section className="border-b border-forest-200/70 py-14">
+      <section className="border-b border-white/[0.07] py-14">
         <div className="container grid gap-8 lg:grid-cols-[1.4fr_1fr]">
           <Reveal>
-            <h2 className="font-display text-3xl font-semibold text-forest-900">
+            <h2 className="font-display text-3xl font-semibold text-mist">
               О растении
             </h2>
-            <p className="mt-4 text-lg leading-relaxed text-forest-700/90">
+            <p className="mt-4 text-lg leading-relaxed text-mist/72">
               {plant.description}
             </p>
           </Reveal>
           <Reveal delay={120}>
-            <div className="leaf-frame rounded-3xl bg-paper p-6 ring-1 ring-forest-200/70 lg:p-8">
+            <div className="rounded-3xl bg-gs-card p-6 ring-1 ring-white/10 lg:p-8">
               <SectionLabel>В ландшафте</SectionLabel>
-              <h3 className="mt-3 font-display text-2xl font-semibold text-forest-900">
+              <h3 className="mt-3 font-display text-2xl font-semibold text-mist">
                 Где применяем
               </h3>
-              <p className="mt-3 leading-relaxed text-forest-700/90">{plant.uses}</p>
+              <p className="mt-3 leading-relaxed text-mist/72">{plant.uses}</p>
             </div>
           </Reveal>
         </div>
@@ -166,7 +166,7 @@ export default async function PlantPage({ params }: { params: { slug: string } }
           <div className="container">
             <Reveal className="mb-8">
               <SectionLabel>Из той же группы</SectionLabel>
-              <h2 className="mt-3 font-display text-3xl font-semibold text-forest-900">
+              <h2 className="mt-3 font-display text-3xl font-semibold text-mist">
                 Похожие растения
               </h2>
             </Reveal>
@@ -175,15 +175,15 @@ export default async function PlantPage({ params }: { params: { slug: string } }
                 <Reveal key={p.slug} delay={i * 80}>
                   <Link
                     href={`/plants/${p.slug}`}
-                    className="group block h-full overflow-hidden rounded-3xl bg-paper shadow-card ring-1 ring-forest-200/70 transition-all duration-300 hover:-translate-y-1.5 hover:ring-wheat-500/50"
+                    className="group block h-full overflow-hidden rounded-3xl bg-white/[0.04] shadow-card ring-1 ring-white/10 transition-all duration-300 hover:-translate-y-1.5 hover:ring-aqua-400/45"
                   >
                     <PlantImage src={p.image} alt={p.name} className="aspect-[4/3]" />
                     <div className="p-5">
-                      <div className="font-display text-xl text-forest-800 transition-colors group-hover:text-wheat-700">
+                      <div className="font-display text-xl text-mist transition-colors group-hover:text-aqua-400">
                         {p.name}
                       </div>
-                      <div className="text-sm italic text-forest-500">{p.latin}</div>
-                      <p className="mt-2 text-sm leading-relaxed text-forest-700/80">
+                      <div className="text-sm italic text-mist/45">{p.latin}</div>
+                      <p className="mt-2 text-sm leading-relaxed text-mist/70">
                         {p.short}
                       </p>
                     </div>

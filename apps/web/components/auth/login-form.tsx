@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 import { authInputClass, authPrimaryBtn } from "@/components/auth/auth-shell";
 
-const labelClass = "mb-1.5 block text-sm font-medium text-forest-700";
+const labelClass = "mb-1.5 block text-sm font-medium text-mist/80";
 
 export function LoginForm() {
   const router = useRouter();
@@ -66,12 +66,12 @@ export function LoginForm() {
             placeholder="••••••••"
           />
           <div className="mt-1.5 text-right">
-            <Link href="/forgot-password" className="text-xs text-forest-600 transition hover:text-wheat-700 hover:underline">
+            <Link href="/forgot-password" className="text-xs text-mist/60 transition hover:text-aqua-400 hover:underline">
               Забыли пароль?
             </Link>
           </div>
         </div>
-        {error && <p className="text-sm font-medium text-red-700">{error}</p>}
+        {error && <p className="text-sm font-medium text-red-400">{error}</p>}
         <button type="submit" disabled={busy} className={authPrimaryBtn}>
           {busy ? "Входим…" : "Войти"}
         </button>
@@ -79,22 +79,22 @@ export function LoginForm() {
 
       {hasVk && (
         <>
-          <div className="my-5 flex items-center gap-3 text-xs uppercase tracking-[0.18em] text-forest-500">
-            <span className="h-px flex-1 bg-forest-200" /> или <span className="h-px flex-1 bg-forest-200" />
+          <div className="my-5 flex items-center gap-3 text-xs uppercase tracking-[0.18em] text-mist/50">
+            <span className="h-px flex-1 bg-white/12" /> или <span className="h-px flex-1 bg-white/12" />
           </div>
           <button
             type="button"
             onClick={() => signIn("vk", { callbackUrl })}
-            className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-forest-300 px-5 py-3 text-sm font-medium text-forest-800 transition hover:border-wheat-600 hover:text-wheat-700"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/20 px-5 py-3 text-sm font-medium text-mist transition hover:border-aqua-400 hover:text-aqua-400"
           >
             Войти через VK
           </button>
         </>
       )}
 
-      <p className="mt-6 text-center text-sm text-forest-600">
+      <p className="mt-6 text-center text-sm text-mist/60">
         Нет аккаунта?{" "}
-        <Link href="/register" className="font-medium text-wheat-700 hover:underline">
+        <Link href="/register" className="font-medium text-aqua-400 hover:underline">
           Регистрация
         </Link>
       </p>

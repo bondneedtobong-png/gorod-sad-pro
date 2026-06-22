@@ -19,13 +19,13 @@ export default async function ProjectsPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="font-display text-3xl font-semibold tracking-tight text-forest-900">Мои проекты</h1>
+      <h1 className="font-display text-3xl font-semibold tracking-tight text-mist">Мои проекты</h1>
 
       {projects.length === 0 ? (
         <div className={cardClass}>
-          <p className="text-forest-600">
+          <p className="text-mist/60">
             Пока нет сохранённых проектов. Откройте{" "}
-            <Link href="/sandbox" className="text-wheat-700 underline">конструктор сада</Link>, соберите
+            <Link href="/sandbox" className="text-aqua-400 underline">конструктор сада</Link>, соберите
             план участка и нажмите «Сохранить проект» — он появится здесь.
           </p>
         </div>

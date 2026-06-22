@@ -20,19 +20,19 @@ export default async function ProfilePage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="font-display text-3xl font-semibold tracking-tight text-forest-900">Профиль</h1>
+      <h1 className="font-display text-3xl font-semibold tracking-tight text-mist">Профиль</h1>
 
       <div className={cardClass}>
-        <h2 className="mb-4 font-display text-xl font-semibold text-forest-900">Личные данные</h2>
+        <h2 className="mb-4 font-display text-xl font-semibold text-mist">Личные данные</h2>
         <ProfileForm initial={{ name: user?.name ?? "", email: user?.email ?? "", phone: user?.phone ?? "" }} />
       </div>
 
       <div className={cardClass}>
-        <h2 className="mb-4 font-display text-xl font-semibold text-forest-900">Пароль</h2>
+        <h2 className="mb-4 font-display text-xl font-semibold text-mist">Пароль</h2>
         <PasswordForm hasPassword={Boolean(user?.passwordHash)} />
       </div>
 
-      <div className={`${cardClass} ring-red-200`}>
+      <div className={`${cardClass} ring-red-400/30`}>
         <DangerZone />
       </div>
     </div>

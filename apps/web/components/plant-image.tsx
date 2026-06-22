@@ -35,7 +35,7 @@ export function PlantImage({
   const showImage = Boolean(src) && !failed;
 
   return (
-    <div className={cn("relative overflow-hidden bg-forest-100", className)}>
+    <div className={cn("relative overflow-hidden bg-pine-800", className)}>
       {showImage ? (
         <Image
           src={src as string}
@@ -47,20 +47,20 @@ export function PlantImage({
           onError={() => setFailed(true)}
         />
       ) : (
-        <div className="absolute inset-0 bg-gradient-to-br from-forest-300 via-forest-100 to-wheat-300">
+        <div className="absolute inset-0 bg-gradient-to-br from-pine-700 via-pine-900 to-emerald-600">
           <div
             aria-hidden
-            className="absolute inset-0 opacity-60"
+            className="absolute inset-0 opacity-70"
             style={{
               backgroundImage:
-                "radial-gradient(ellipse 60% 50% at 30% 20%, rgba(255,255,255,0.5), transparent 60%), radial-gradient(ellipse 50% 50% at 80% 90%, rgba(95,132,102,0.35), transparent 60%)",
+                "radial-gradient(ellipse 60% 50% at 30% 20%, rgba(46,230,205,0.28), transparent 60%), radial-gradient(ellipse 50% 50% at 80% 90%, rgba(4,34,27,0.55), transparent 60%)",
             }}
           />
           <div className="absolute inset-0 grid place-items-center">
-            <Leaf className="h-10 w-10 text-forest-600/40" strokeWidth={1.6} />
+            <Leaf className="h-10 w-10 text-mist/30" strokeWidth={1.6} />
           </div>
-          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-forest-900/35 to-transparent p-3">
-            <span className="font-display text-sm text-cream drop-shadow">{alt}</span>
+          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-pine-950/70 to-transparent p-3">
+            <span className="font-display text-sm text-mist drop-shadow">{alt}</span>
           </div>
         </div>
       )}

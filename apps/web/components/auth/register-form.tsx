@@ -7,7 +7,7 @@ import { useState } from "react";
 
 import { authInputClass, authPrimaryBtn } from "@/components/auth/auth-shell";
 
-const labelClass = "mb-1.5 block text-sm font-medium text-forest-700";
+const labelClass = "mb-1.5 block text-sm font-medium text-mist/80";
 
 export function RegisterForm() {
   const router = useRouter();
@@ -72,30 +72,30 @@ export function RegisterForm() {
         <input id="password" type="password" autoComplete="new-password" required minLength={8} value={form.password} onChange={upd("password")} className={authInputClass} placeholder="Минимум 8 символов" />
       </div>
 
-      <label className="flex items-start gap-2.5 text-xs leading-relaxed text-forest-600">
+      <label className="flex items-start gap-2.5 text-xs leading-relaxed text-mist/60">
         <input
           type="checkbox"
           checked={consent}
           onChange={(e) => setConsent(e.target.checked)}
-          className="mt-0.5 h-4 w-4 shrink-0 accent-wheat-600"
+          className="mt-0.5 h-4 w-4 shrink-0 accent-aqua-400"
         />
         <span>
           Я согласен на обработку персональных данных в соответствии с{" "}
-          <Link href="/privacy" className="text-wheat-700 hover:underline" target="_blank">
+          <Link href="/privacy" className="text-aqua-400 hover:underline" target="_blank">
             политикой конфиденциальности
           </Link>
           .
         </span>
       </label>
 
-      {error && <p className="text-sm font-medium text-red-700">{error}</p>}
+      {error && <p className="text-sm font-medium text-red-400">{error}</p>}
       <button type="submit" disabled={busy} className={authPrimaryBtn}>
         {busy ? "Создаём аккаунт…" : "Зарегистрироваться"}
       </button>
 
-      <p className="text-center text-sm text-forest-600">
+      <p className="text-center text-sm text-mist/60">
         Уже есть аккаунт?{" "}
-        <Link href="/login" className="font-medium text-wheat-700 hover:underline">
+        <Link href="/login" className="font-medium text-aqua-400 hover:underline">
           Войти
         </Link>
       </p>

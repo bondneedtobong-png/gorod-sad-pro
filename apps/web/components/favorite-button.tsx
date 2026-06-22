@@ -52,8 +52,8 @@ export function FavoriteButton({ slug }: { slug: string }) {
       className={cn(
         "inline-flex items-center gap-2 rounded-full border px-5 py-3 text-sm font-medium transition",
         fav
-          ? "border-red-300 bg-red-50 text-red-600"
-          : "border-forest-300 text-forest-800 hover:border-wheat-600 hover:text-wheat-700",
+          ? "border-red-400/50 bg-red-500/15 text-red-300"
+          : "border-white/20 text-mist hover:border-aqua-400 hover:text-aqua-400",
       )}
     >
       <Heart className={cn("h-4 w-4", fav && "fill-current")} />

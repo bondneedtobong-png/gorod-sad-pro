@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Golos_Text, Spectral } from "next/font/google";
+import { Manrope, Unbounded } from "next/font/google";
 
 import { AiChatWidget } from "@/components/ai-chat-widget";
 import { CursorGlow } from "@/components/cursor-glow";
@@ -8,18 +8,18 @@ import { SeasonBadge } from "@/components/season-badge";
 
 import "./globals.css";
 
-// Тело — Golos Text (русский гуманистический гротеск, кириллица-first).
-const golos = Golos_Text({
+// Тело — Manrope (геометрический гротеск, кириллица + латиница).
+const manrope = Manrope({
   subsets: ["latin", "cyrillic"],
+  weight: ["400", "500", "600", "700", "800"],
   variable: "--font-sans",
   display: "swap",
 });
 
-// Заголовки — Spectral (современный книжный антиквенный, с кириллицей).
-const spectral = Spectral({
+// Заголовки / лого / цифры — Unbounded (характерный дисплейный, с кириллицей).
+const unbounded = Unbounded({
   subsets: ["latin", "cyrillic"],
-  weight: ["500", "600", "700"],
-  style: ["normal", "italic"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-display",
   display: "swap",
 });
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ru" className={`${golos.variable} ${spectral.variable}`}>
+    <html lang="ru" className={`${manrope.variable} ${unbounded.variable}`}>
       <body className="min-h-screen font-sans">
         <Providers>
           <CursorGlow />

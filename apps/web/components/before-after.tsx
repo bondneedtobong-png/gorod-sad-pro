@@ -87,7 +87,7 @@ export function BeforeAfter({
         onPointerMove={onPointerMove}
         onPointerUp={stop}
         onPointerCancel={stop}
-        className="relative aspect-[16/10] w-full cursor-ew-resize select-none overflow-hidden rounded-3xl shadow-card ring-1 ring-forest-200/70"
+        className="relative aspect-[16/10] w-full cursor-ew-resize select-none overflow-hidden rounded-3xl shadow-card ring-1 ring-white/10"
       >
         {/* СЛОЙ «Стало» (фон) */}
         <div className="absolute inset-0">
@@ -113,16 +113,16 @@ export function BeforeAfter({
         </div>
 
         {/* подписи */}
-        <span className="pointer-events-none absolute left-4 top-4 rounded-full bg-black/35 px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-cream/90 backdrop-blur-sm">
+        <span className="pointer-events-none absolute left-4 top-4 rounded-full bg-black/40 px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-mist/90 backdrop-blur-sm">
           {beforeLabel}
         </span>
-        <span className="pointer-events-none absolute right-4 top-4 rounded-full bg-black/35 px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-cream/90 backdrop-blur-sm">
+        <span className="pointer-events-none absolute right-4 top-4 rounded-full bg-black/40 px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-mist/90 backdrop-blur-sm">
           {afterLabel}
         </span>
 
         {/* разделитель + ручка */}
         <div
-          className="pointer-events-none absolute inset-y-0 z-10 w-px bg-wheat-400/90 shadow-[0_0_12px_rgba(217,199,122,0.6)]"
+          className="pointer-events-none absolute inset-y-0 z-10 w-px bg-aqua-400/90 shadow-[0_0_12px_rgba(46,230,205,0.6)]"
           style={{ left: `${pos}%`, transform: "translateX(-50%)", transition: glide }}
         >
           <div
@@ -133,7 +133,7 @@ export function BeforeAfter({
             aria-valuemax={100}
             aria-valuenow={Math.round(pos)}
             onKeyDown={onKeyDown}
-            className="pointer-events-auto absolute top-1/2 left-1/2 grid h-11 w-11 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize place-items-center rounded-full bg-wheat-500 text-bark shadow-wheat-glow outline-none ring-2 ring-cream/40 focus-visible:ring-4 focus-visible:ring-cream/70"
+            className="pointer-events-auto absolute top-1/2 left-1/2 grid h-11 w-11 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize place-items-center rounded-full bg-aqua-400 text-pine-950 shadow-aqua-glow outline-none ring-2 ring-white/40 focus-visible:ring-4 focus-visible:ring-white/70"
           >
             <div className="flex items-center">
               <ChevronLeft className="h-4 w-4 -mr-1" strokeWidth={2.4} />
@@ -143,7 +143,7 @@ export function BeforeAfter({
         </div>
       </div>
 
-      {caption && <p className="mt-3 text-center text-sm text-cream/55">{caption}</p>}
+      {caption && <p className="mt-3 text-center text-sm text-mist/55">{caption}</p>}
     </div>
   );
 }
@@ -152,7 +152,7 @@ export function BeforeAfter({
 
 function DemoTag() {
   return (
-    <span className="absolute bottom-3 right-3 rounded bg-black/30 px-2 py-0.5 text-[10px] uppercase tracking-[0.2em] text-cream/70">
+    <span className="absolute bottom-3 right-3 rounded bg-black/40 px-2 py-0.5 text-[10px] uppercase tracking-[0.2em] text-mist/70">
       демо
     </span>
   );

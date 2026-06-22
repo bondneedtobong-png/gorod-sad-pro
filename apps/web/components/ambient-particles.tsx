@@ -32,8 +32,8 @@ interface Particle {
   color: string;
 }
 
-const DAY_COLORS = ["#EDE4B5", "#D9C77A", "#8DA993", "#A8D8A0"];
-const NIGHT_COLOR = "#E5D998";
+const DAY_COLORS = ["#A6F7EC", "#67F0DD", "#16A085", "#EAF5F0"];
+const NIGHT_COLOR = "#67F0DD";
 
 export function AmbientParticles({ mode = "day", className }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);

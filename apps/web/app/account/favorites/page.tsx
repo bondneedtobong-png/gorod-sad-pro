@@ -21,28 +21,28 @@ export default async function FavoritesPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="font-display text-3xl font-semibold tracking-tight text-forest-900">Избранные растения</h1>
+      <h1 className="font-display text-3xl font-semibold tracking-tight text-mist">Избранные растения</h1>
 
       {favs.length === 0 ? (
         <div className={cardClass}>
-          <p className="text-forest-600">
+          <p className="text-mist/60">
             Пока пусто. Откройте{" "}
-            <Link href="/plants" className="text-wheat-700 underline">энциклопедию</Link> и нажимайте
+            <Link href="/plants" className="text-aqua-400 underline">энциклопедию</Link> и нажимайте
             «сердечко» на понравившихся растениях.
           </p>
         </div>
       ) : (
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {favs.map((f) => (
-            <div key={f.id} className="group relative overflow-hidden rounded-3xl bg-paper shadow-card ring-1 ring-forest-200/70">
+            <div key={f.id} className="group relative overflow-hidden rounded-3xl bg-white/[0.04] shadow-card ring-1 ring-white/10">
               <Link href={`/plants/${f.plant.slug}`}>
                 <PlantImage src={f.plant.image} alt={f.plant.name} className="aspect-[4/3]" />
               </Link>
               <div className="p-4">
-                <Link href={`/plants/${f.plant.slug}`} className="font-display text-lg text-forest-800 transition-colors hover:text-wheat-700">
+                <Link href={`/plants/${f.plant.slug}`} className="font-display text-lg text-mist transition-colors hover:text-aqua-400">
                   {f.plant.name}
                 </Link>
-                <div className="text-xs italic text-forest-500">{f.plant.latin}</div>
+                <div className="text-xs italic text-mist/45">{f.plant.latin}</div>
               </div>
               <FavoriteRemove slug={f.plant.slug} className="absolute right-3 top-3" />
             </div>

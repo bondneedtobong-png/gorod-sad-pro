@@ -33,7 +33,7 @@ export function ProfileForm({
       <div>
         <label className={labelClass} htmlFor="email">Email</label>
         <input id="email" value={initial.email} disabled className={`${inputClass} cursor-not-allowed opacity-60`} />
-        <p className="mt-1 text-xs text-forest-500">Email менять нельзя — это ваш логин.</p>
+        <p className="mt-1 text-xs text-mist/50">Email менять нельзя — это ваш логин.</p>
       </div>
       <div>
         <label className={labelClass} htmlFor="phone">Телефон</label>
@@ -44,7 +44,7 @@ export function ProfileForm({
           {busy ? "Сохраняем…" : "Сохранить"}
         </button>
         {msg && (
-          <span className={msg.ok ? "text-sm text-forest-600" : "text-sm text-red-700"}>{msg.text}</span>
+          <span className={msg.ok ? "text-sm text-aqua-400" : "text-sm text-red-400"}>{msg.text}</span>
         )}
       </div>
     </form>

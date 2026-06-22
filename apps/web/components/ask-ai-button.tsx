@@ -24,7 +24,7 @@ export function AskAiButton({
       }
       aria-label={`Спросить ИИ про растение ${plantName}`}
       className={cn(
-        "inline-flex items-center gap-2 rounded-full bg-wheat-500 px-5 py-3 text-sm font-medium text-forest-900 shadow-wheat-glow transition hover:bg-wheat-400",
+        "inline-flex items-center gap-2 rounded-full bg-gs-fresh px-5 py-3 text-sm font-semibold text-pine-950 shadow-aqua-glow transition hover:brightness-110",
         className,
       )}
     >

@@ -332,13 +332,13 @@ export function GardenSandbox() {
     return (
       <div className="space-y-4">
         {savedNotice && (
-          <div className="rounded-3xl border border-wheat-500/30 bg-wheat-500/10 p-4 lg:p-6">
+          <div className="rounded-3xl border border-aqua-400/30 bg-aqua-400/10 p-4 lg:p-6">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
-                <div className="font-display text-xl text-wheat-400">
+                <div className="font-display text-xl text-aqua-400">
                   Найден сохранённый план
                 </div>
-                <div className="text-xs text-cream/60">
+                <div className="text-xs text-mist/60">
                   {savedNotice.config.width}×{savedNotice.config.height} м,
                   сохранён{" "}
                   {new Date(savedNotice.savedAt).toLocaleString("ru-RU", {
@@ -353,14 +353,14 @@ export function GardenSandbox() {
                 <button
                   type="button"
                   onClick={() => restoreSaved(savedNotice)}
-                  className="rounded-full bg-wheat-500 px-4 py-2 text-sm font-medium text-bark shadow-wheat-glow hover:bg-wheat-400"
+                  className="rounded-full bg-gs-fresh px-4 py-2 text-sm font-medium text-pine-950 shadow-aqua-glow hover:brightness-110"
                 >
                   Восстановить
                 </button>
                 <button
                   type="button"
                   onClick={() => setSavedNotice(null)}
-                  className="rounded-full border border-forest-600/40 px-4 py-2 text-sm text-cream/70 hover:text-cream"
+                  className="rounded-full border border-white/10 px-4 py-2 text-sm text-mist/70 hover:text-mist"
                 >
                   Начать с нуля
                 </button>
@@ -386,7 +386,7 @@ export function GardenSandbox() {
             <button
               type="button"
               onClick={() => setSetupOpen(true)}
-              className="inline-flex items-center gap-1.5 rounded-full border border-forest-600/40 bg-forest-800/40 px-3 py-1.5 text-xs text-cream/70 transition hover:border-wheat-500/40 hover:text-wheat-400"
+              className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs text-mist/70 transition hover:border-aqua-400/40 hover:text-aqua-400"
             >
               <Settings className="h-3 w-3" /> {config.width}×{config.height} м
               <ChevronRight className="h-3 w-3" />
@@ -400,8 +400,8 @@ export function GardenSandbox() {
                   className={cn(
                     "flex items-center gap-1 rounded-full border px-2.5 py-1 text-[11px] uppercase tracking-[0.15em] transition",
                     season === s.key
-                      ? "border-wheat-400 bg-wheat-500/15 text-wheat-400"
-                      : "border-forest-600/40 bg-forest-800/40 text-cream/60 hover:text-cream",
+                      ? "border-aqua-400 bg-aqua-400/15 text-aqua-400"
+                      : "border-white/10 bg-white/[0.04] text-mist/60 hover:text-mist",
                   )}
                   title={s.label}
                 >
@@ -415,7 +415,7 @@ export function GardenSandbox() {
               type="button"
               onClick={undo}
               disabled={historyIndex === 0}
-              className="grid h-8 w-8 place-items-center rounded-full border border-forest-600/40 text-cream/70 transition hover:border-wheat-500/40 hover:text-wheat-400 disabled:cursor-not-allowed disabled:opacity-30"
+              className="grid h-8 w-8 place-items-center rounded-full border border-white/10 text-mist/70 transition hover:border-aqua-400/40 hover:text-aqua-400 disabled:cursor-not-allowed disabled:opacity-30"
               title="Отменить (Ctrl+Z)"
             >
               <Undo2 className="h-3.5 w-3.5" />
@@ -424,7 +424,7 @@ export function GardenSandbox() {
               type="button"
               onClick={redo}
               disabled={historyIndex >= history.length - 1}
-              className="grid h-8 w-8 place-items-center rounded-full border border-forest-600/40 text-cream/70 transition hover:border-wheat-500/40 hover:text-wheat-400 disabled:cursor-not-allowed disabled:opacity-30"
+              className="grid h-8 w-8 place-items-center rounded-full border border-white/10 text-mist/70 transition hover:border-aqua-400/40 hover:text-aqua-400 disabled:cursor-not-allowed disabled:opacity-30"
               title="Повторить (Ctrl+Y)"
             >
               <Redo2 className="h-3.5 w-3.5" />
@@ -432,7 +432,7 @@ export function GardenSandbox() {
             <button
               type="button"
               onClick={reset}
-              className="grid h-8 w-8 place-items-center rounded-full border border-forest-600/40 text-cream/70 transition hover:border-copper hover:text-copper"
+              className="grid h-8 w-8 place-items-center rounded-full border border-white/10 text-mist/70 transition hover:border-red-400 hover:text-red-400"
               title="Очистить"
             >
               <RotateCcw className="h-3.5 w-3.5" />
@@ -451,17 +451,17 @@ export function GardenSandbox() {
         />
 
         {/* Итог */}
-        <div className="rounded-3xl bg-forest-800/60 p-4 ring-1 ring-forest-600/40">
+        <div className="rounded-3xl bg-white/[0.05] p-4 ring-1 ring-white/10">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
-              <div className="text-xs uppercase tracking-[0.18em] text-wheat-400">
+              <div className="text-xs uppercase tracking-[0.18em] text-aqua-400">
                 Итого проект
               </div>
-              <div className="font-display text-4xl text-cream">
+              <div className="font-display text-4xl text-mist">
                 {pricing ? formatRub(pricing.final_total) : "—"}
               </div>
               {pricing && pricing.full_cycle_discount > 0 && (
-                <div className="mt-0.5 text-xs text-wheat-400">
+                <div className="mt-0.5 text-xs text-aqua-400">
                   Скидка −{formatRub(pricing.full_cycle_discount)}
                 </div>
               )}
@@ -470,7 +470,7 @@ export function GardenSandbox() {
               <button
                 type="button"
                 onClick={downloadSvg}
-                className="inline-flex items-center gap-1.5 rounded-full border border-wheat-500/40 px-4 py-2 text-sm text-cream transition hover:border-wheat-400 hover:text-wheat-400"
+                className="inline-flex items-center gap-1.5 rounded-full border border-aqua-400/40 px-4 py-2 text-sm text-mist transition hover:border-aqua-400 hover:text-aqua-400"
               >
                 <Download className="h-3.5 w-3.5" /> SVG
               </button>
@@ -478,7 +478,7 @@ export function GardenSandbox() {
                 type="button"
                 onClick={() => setLeadOpen(true)}
                 disabled={!pricing || pricing.grand_total === 0}
-                className="inline-flex items-center gap-1.5 rounded-full bg-wheat-500 px-5 py-2 text-sm font-medium text-bark shadow-wheat-glow transition hover:bg-wheat-400 disabled:cursor-not-allowed disabled:opacity-40"
+                className="inline-flex items-center gap-1.5 rounded-full bg-gs-fresh px-5 py-2 text-sm font-medium text-pine-950 shadow-aqua-glow transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-40"
               >
                 <Sparkles className="h-3.5 w-3.5" /> Хочу такой сад
               </button>
@@ -489,8 +489,8 @@ export function GardenSandbox() {
 
       {/* === ПРАВАЯ КОЛОНКА: палитра + смета === */}
       <aside className="space-y-4">
-        <div className="rounded-3xl bg-forest-800/60 p-4 ring-1 ring-forest-600/40">
-          <div className="mb-3 text-xs uppercase tracking-[0.18em] text-wheat-400">
+        <div className="rounded-3xl bg-white/[0.05] p-4 ring-1 ring-white/10">
+          <div className="mb-3 text-xs uppercase tracking-[0.18em] text-aqua-400">
             Элементы
           </div>
           <div className="grid grid-cols-3 gap-2">
@@ -502,15 +502,15 @@ export function GardenSandbox() {
                 className={cn(
                   "flex flex-col items-center gap-1 rounded-2xl border p-2 transition",
                   selected.id === item.id
-                    ? "border-wheat-400/70 bg-wheat-500/15 shadow-wheat-glow"
-                    : "border-forest-600/40 bg-forest-900/40 hover:border-forest-500/60",
+                    ? "border-aqua-400/70 bg-aqua-400/15 shadow-aqua-glow"
+                    : "border-white/10 bg-pine-950/40 hover:border-white/25",
                 )}
               >
                 <div className="h-10 w-10">
                   <item.Icon className="h-full w-full" season={season} />
                 </div>
-                <div className="text-[10px] font-medium text-cream/80">{item.name}</div>
-                <div className="text-[10px] text-cream/40">
+                <div className="text-[10px] font-medium text-mist/80">{item.name}</div>
+                <div className="text-[10px] text-mist/40">
                   {item.id === "eraser"
                     ? "—"
                     : formatRub(ELEMENT_PRICES[item.value as ElementKey])}
@@ -527,27 +527,27 @@ export function GardenSandbox() {
           className={cn(
             "flex w-full items-start gap-3 rounded-2xl border p-3 text-left transition",
             fullCycle
-              ? "border-wheat-400/70 bg-wheat-500/15"
-              : "border-forest-600/40 bg-forest-900/40 hover:border-forest-500/60",
+              ? "border-aqua-400/70 bg-aqua-400/15"
+              : "border-white/10 bg-pine-950/40 hover:border-white/25",
           )}
         >
           <div
             className={cn(
               "mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded border transition",
-              fullCycle ? "border-wheat-400 bg-wheat-500 text-bark" : "border-cream/40",
+              fullCycle ? "border-aqua-400 bg-gs-fresh text-pine-950" : "border-white/30",
             )}
           >
             {fullCycle && <Check className="h-3.5 w-3.5" strokeWidth={3} />}
           </div>
           <div className="flex-1">
-            <div className={cn("text-sm font-medium", fullCycle ? "text-wheat-400" : "text-cream")}>
+            <div className={cn("text-sm font-medium", fullCycle ? "text-aqua-400" : "text-mist")}>
               Комплекс работ
             </div>
-            <div className="mt-0.5 text-[11px] text-cream/60">
+            <div className="mt-0.5 text-[11px] text-mist/60">
               При полном цикле — −30% от сметы проектирования
             </div>
           </div>
-          {fullCycle && <span className="font-display text-xl text-wheat-400">−30%</span>}
+          {fullCycle && <span className="font-display text-xl text-aqua-400">−30%</span>}
         </button>
 
         {/* Смета */}
@@ -608,21 +608,21 @@ function SetupForm({ onStart }: { onStart: (cfg: PlotConfig) => void }) {
   }
 
   return (
-    <div className="rounded-3xl bg-forest-800/60 p-6 ring-1 ring-forest-600/40 lg:p-10">
-      <div className="text-xs uppercase tracking-[0.22em] text-wheat-400">
+    <div className="rounded-3xl bg-white/[0.05] p-6 ring-1 ring-white/10 lg:p-10">
+      <div className="text-xs uppercase tracking-[0.22em] text-aqua-400">
         Шаг 1 · Параметры
       </div>
-      <h2 className="mt-2 font-display text-3xl font-semibold text-cream lg:text-4xl">
+      <h2 className="mt-2 font-display text-3xl font-semibold text-mist lg:text-4xl">
         Расскажите про участок
       </h2>
-      <p className="mt-2 text-sm text-cream/70">
+      <p className="mt-2 text-sm text-mist/70">
         Зная размер и состояние земли, мы сразу покажем точную смету.
       </p>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-2">
         {/* Размер */}
         <div className="space-y-4">
-          <div className="text-xs uppercase tracking-[0.18em] text-wheat-400">
+          <div className="text-xs uppercase tracking-[0.18em] text-aqua-400">
             Размер участка
           </div>
           <div className="grid grid-cols-2 gap-3">
@@ -643,10 +643,10 @@ function SetupForm({ onStart }: { onStart: (cfg: PlotConfig) => void }) {
               onChange={setHeight}
             />
           </div>
-          <div className="rounded-2xl bg-forest-900/40 p-3 text-sm text-cream/70 ring-1 ring-forest-600/40">
-            Площадь: <span className="font-display text-2xl text-cream">{area}</span> м²
+          <div className="rounded-2xl bg-pine-950/40 p-3 text-sm text-mist/70 ring-1 ring-white/10">
+            Площадь: <span className="font-display text-2xl text-mist">{area}</span> м²
             {tooLarge && (
-              <div className="mt-1 text-xs text-copper">
+              <div className="mt-1 text-xs text-amber-400">
                 Слишком большой участок для конструктора — выберите до 2 500 м² (≈25 соток).
               </div>
             )}
@@ -655,7 +655,7 @@ function SetupForm({ onStart }: { onStart: (cfg: PlotConfig) => void }) {
 
         {/* Условия */}
         <div className="space-y-3">
-          <div className="text-xs uppercase tracking-[0.18em] text-wheat-400">
+          <div className="text-xs uppercase tracking-[0.18em] text-aqua-400">
             Состояние земли
           </div>
           <div className="space-y-2">
@@ -669,16 +669,16 @@ function SetupForm({ onStart }: { onStart: (cfg: PlotConfig) => void }) {
                   className={cn(
                     "flex w-full items-start gap-3 rounded-2xl border p-3 text-left transition",
                     checked
-                      ? "border-wheat-400/70 bg-wheat-500/10"
-                      : "border-forest-600/40 bg-forest-900/40 hover:border-forest-500/60",
+                      ? "border-aqua-400/70 bg-aqua-400/10"
+                      : "border-white/10 bg-pine-950/40 hover:border-white/25",
                   )}
                 >
                   <div
                     className={cn(
                       "mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded border transition",
                       checked
-                        ? "border-wheat-400 bg-wheat-500 text-bark"
-                        : "border-cream/40",
+                        ? "border-aqua-400 bg-gs-fresh text-pine-950"
+                        : "border-white/30",
                     )}
                   >
                     {checked && <Check className="h-3.5 w-3.5" strokeWidth={3} />}
@@ -687,18 +687,18 @@ function SetupForm({ onStart }: { onStart: (cfg: PlotConfig) => void }) {
                     <div
                       className={cn(
                         "text-sm font-medium",
-                        checked ? "text-wheat-400" : "text-cream",
+                        checked ? "text-aqua-400" : "text-mist",
                       )}
                     >
                       {opt.label}
                     </div>
-                    <div className="text-xs text-cream/60">{opt.hint}</div>
+                    <div className="text-xs text-mist/60">{opt.hint}</div>
                   </div>
                 </button>
               );
             })}
             {conditions.has("stumps") && (
-              <div className="ml-8 rounded-2xl bg-forest-900/40 p-3 ring-1 ring-forest-600/40">
+              <div className="ml-8 rounded-2xl bg-pine-950/40 p-3 ring-1 ring-white/10">
                 <NumField
                   label="Сколько пней/деревьев убрать?"
                   unit="шт"
@@ -717,7 +717,7 @@ function SetupForm({ onStart }: { onStart: (cfg: PlotConfig) => void }) {
         type="button"
         onClick={start}
         disabled={tooLarge}
-        className="mt-8 inline-flex items-center gap-2 rounded-full bg-wheat-500 px-6 py-3 font-medium text-bark shadow-wheat-glow transition hover:bg-wheat-400 disabled:cursor-not-allowed disabled:opacity-40"
+        className="mt-8 inline-flex items-center gap-2 rounded-full bg-gs-fresh px-6 py-3 font-medium text-pine-950 shadow-aqua-glow transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-40"
       >
         Создать план <ChevronRight className="h-4 w-4" />
       </button>
@@ -765,8 +765,8 @@ function NumField({
 
   return (
     <label className="block">
-      <span className="text-xs text-cream/60">{label}</span>
-      <div className="mt-1 flex items-center gap-2 rounded-xl border border-forest-700/60 bg-forest-900/60 px-3 py-2">
+      <span className="text-xs text-mist/60">{label}</span>
+      <div className="mt-1 flex items-center gap-2 rounded-xl border border-white/10 bg-pine-950/60 px-3 py-2">
         <input
           type="text"
           inputMode="numeric"
@@ -780,11 +780,11 @@ function NumField({
               (e.currentTarget as HTMLInputElement).blur();
             }
           }}
-          className="w-full bg-transparent text-lg text-cream focus:outline-none"
+          className="w-full bg-transparent text-lg text-mist focus:outline-none"
         />
-        <span className="text-xs text-cream/40">{unit}</span>
+        <span className="text-xs text-mist/40">{unit}</span>
       </div>
-      <span className="mt-1 block text-[10px] text-cream/40">
+      <span className="mt-1 block text-[10px] text-mist/40">
         от {min} до {max}
       </span>
     </label>
@@ -815,9 +815,9 @@ function IsometricGrid({
   return (
     <div
       className={cn(
-        "relative rounded-3xl ring-1 ring-forest-600/40 transition-colors duration-700",
-        season === "spring" && "bg-forest-700/40",
-        season === "summer" && "bg-forest-800/50",
+        "relative rounded-3xl ring-1 ring-white/10 transition-colors duration-700",
+        season === "spring" && "bg-pine-700/40",
+        season === "summer" && "bg-pine-800/50",
         season === "autumn" && "bg-[#3a2f24]",
         season === "winter" && "bg-[#1b2935]",
       )}
@@ -870,7 +870,7 @@ function FlatCell({
     <div
       onPointerDown={onDown}
       onPointerEnter={onEnter}
-      className="relative border border-forest-700/25 transition-colors hover:bg-wheat-500/10"
+      className="relative border border-white/[0.06] transition-colors hover:bg-aqua-400/10"
     >
       {/* Покрытие — плоско */}
       {cell.ground === "lawn" && <LawnIcon className="absolute inset-0 h-full w-full" season={season} />}
@@ -914,12 +914,12 @@ function PricingPanel({
   const nonEmpty = cats.filter((c) => c.items.length > 0);
 
   return (
-    <div className="rounded-3xl bg-forest-800/40 p-4 ring-1 ring-forest-600/40">
-      <div className="mb-2 text-xs uppercase tracking-[0.18em] text-wheat-400">
+    <div className="rounded-3xl bg-white/[0.04] p-4 ring-1 ring-white/10">
+      <div className="mb-2 text-xs uppercase tracking-[0.18em] text-aqua-400">
         Смета
       </div>
       {nonEmpty.length === 0 ? (
-        <div className="py-4 text-center text-sm text-cream/50">
+        <div className="py-4 text-center text-sm text-mist/50">
           Начните размещать элементы — здесь появится разбивка
         </div>
       ) : (
@@ -927,21 +927,21 @@ function PricingPanel({
           {nonEmpty.map((cat) => (
             <details key={cat.key} open className="group">
               <summary className="flex cursor-pointer items-center justify-between list-none">
-                <span className="text-sm font-medium text-cream">{cat.label}</span>
-                <span className="font-display text-base text-wheat-400">
+                <span className="text-sm font-medium text-mist">{cat.label}</span>
+                <span className="font-display text-base text-aqua-400">
                   {formatRub(cat.total)}
                 </span>
               </summary>
-              <div className="mt-2 space-y-1 border-l border-forest-600/40 pl-3 text-xs">
+              <div className="mt-2 space-y-1 border-l border-white/10 pl-3 text-xs">
                 {cat.items.map((item, i) => (
                   <div key={i} className="flex items-baseline justify-between gap-2">
-                    <span className="text-cream/70">
+                    <span className="text-mist/70">
                       {item.name}{" "}
-                      <span className="text-cream/40">
+                      <span className="text-mist/40">
                         × {item.qty} {item.unit}
                       </span>
                     </span>
-                    <span className="font-mono text-cream/80">{formatRub(item.total)}</span>
+                    <span className="font-mono text-mist/80">{formatRub(item.total)}</span>
                   </div>
                 ))}
               </div>
@@ -1015,20 +1015,20 @@ function LeadDialog({
 
   return (
     <div className="fixed inset-0 z-50 grid place-items-center bg-black/60 p-4 backdrop-blur-sm">
-      <div className="w-full max-w-md rounded-3xl border border-forest-600/40 bg-forest-900 p-6 shadow-leaf">
+      <div className="w-full max-w-md rounded-3xl border border-white/10 bg-pine-900 p-6 shadow-card">
         <div className="mb-4 flex items-start justify-between gap-3">
           <div>
-            <div className="font-display text-2xl text-wheat-400">
+            <div className="font-display text-2xl text-aqua-400">
               {sent ? "Спасибо!" : "Хочу такой сад"}
             </div>
-            <div className="mt-1 text-xs uppercase tracking-[0.18em] text-cream/50">
+            <div className="mt-1 text-xs uppercase tracking-[0.18em] text-mist/50">
               {sent ? "заявка отправлена" : `план на ${formatRub(total)}`}
             </div>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="grid h-8 w-8 place-items-center rounded-full text-cream/60 transition hover:bg-forest-800 hover:text-cream"
+            className="grid h-8 w-8 place-items-center rounded-full text-mist/60 transition hover:bg-pine-800hover:text-mist"
           >
             <X className="h-4 w-4" />
           </button>
@@ -1036,13 +1036,13 @@ function LeadDialog({
 
         {sent ? (
           <div className="space-y-4">
-            <p className="text-sm leading-relaxed text-cream/80">
+            <p className="text-sm leading-relaxed text-mist/80">
               План и параметры участка сохранены. Алексей Юрьевич свяжется
               в ближайшие часы. Если срочно:
             </p>
             <a
               href="tel:+79370388344"
-              className="flex items-center gap-3 rounded-2xl bg-wheat-500 px-5 py-3 font-medium text-bark shadow-wheat-glow transition hover:bg-wheat-400"
+              className="flex items-center gap-3 rounded-2xl bg-gs-fresh px-5 py-3 font-medium text-pine-950 shadow-aqua-glow transition hover:brightness-110"
             >
               <Phone className="h-5 w-5" /> 8-937-038-83-44
             </a>
@@ -1055,7 +1055,7 @@ function LeadDialog({
               onChange={(e) => setName(e.target.value)}
               placeholder="Имя"
               required
-              className="w-full rounded-xl border border-forest-700/60 bg-forest-800/60 px-4 py-3 text-cream placeholder:text-cream/40 focus:border-wheat-500/50 focus:outline-none"
+              className="w-full rounded-xl border border-white/10 bg-white/[0.05] px-4 py-3 text-mist placeholder:text-mist/40 focus:border-aqua-400/50 focus:outline-none"
             />
             <input
               type="tel"
@@ -1063,25 +1063,25 @@ function LeadDialog({
               onChange={(e) => setPhone(e.target.value)}
               placeholder="+7 (___) ___-__-__"
               required
-              className="w-full rounded-xl border border-forest-700/60 bg-forest-800/60 px-4 py-3 text-cream placeholder:text-cream/40 focus:border-wheat-500/50 focus:outline-none"
+              className="w-full rounded-xl border border-white/10 bg-white/[0.05] px-4 py-3 text-mist placeholder:text-mist/40 focus:border-aqua-400/50 focus:outline-none"
             />
             <textarea
               value={comment}
               onChange={(e) => setComment(e.target.value)}
               placeholder="Комментарий (необязательно)"
               rows={3}
-              className="w-full resize-none rounded-xl border border-forest-700/60 bg-forest-800/60 px-4 py-3 text-cream placeholder:text-cream/40 focus:border-wheat-500/50 focus:outline-none"
+              className="w-full resize-none rounded-xl border border-white/10 bg-white/[0.05] px-4 py-3 text-mist placeholder:text-mist/40 focus:border-aqua-400/50 focus:outline-none"
             />
-            {error && <div className="text-xs text-copper">{error}</div>}
+            {error && <div className="text-xs text-red-400">{error}</div>}
             <button
               type="submit"
               disabled={busy || !name.trim() || !phone.trim()}
-              className="flex w-full items-center justify-center gap-2 rounded-xl bg-wheat-500 py-3 font-medium text-bark shadow-wheat-glow transition hover:bg-wheat-400 disabled:cursor-not-allowed disabled:opacity-40"
+              className="flex w-full items-center justify-center gap-2 rounded-xl bg-gs-fresh py-3 font-medium text-pine-950 shadow-aqua-glow transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-40"
             >
               <Send className="h-4 w-4" />
               {busy ? "Отправляю..." : "Отправить заявку"}
             </button>
-            <p className="text-xs text-cream/40">
+            <p className="text-xs text-mist/40">
               Прикладываем размер участка, состояние земли, SVG-план и смету.
             </p>
           </form>

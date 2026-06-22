@@ -24,7 +24,7 @@ export function FavoriteRemove({ slug, className }: { slug: string; className?: 
       disabled={busy}
       aria-label="Убрать из избранного"
       className={cn(
-        "grid h-9 w-9 place-items-center rounded-full bg-paper/90 text-red-500 shadow ring-1 ring-forest-200/70 backdrop-blur transition hover:bg-white disabled:opacity-50",
+        "grid h-9 w-9 place-items-center rounded-full bg-pine-900/90 text-red-400 shadow ring-1 ring-white/10 backdrop-blur transition hover:bg-pine-800 disabled:opacity-50",
         className,
       )}
     >

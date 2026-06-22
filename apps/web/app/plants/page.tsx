@@ -25,7 +25,7 @@ export default async function PlantsPage() {
       <SiteHeader />
 
       {/* Hero энциклопедии */}
-      <section className="relative isolate overflow-hidden border-b border-forest-200/70">
+      <section className="relative isolate overflow-hidden border-b border-white/[0.07]">
         <PhotoBackdrop
           src={BACKGROUNDS.encyclopedia}
           blurPx={3}
@@ -35,11 +35,11 @@ export default async function PlantsPage() {
         <div className="container relative z-10 py-16 lg:py-20">
           <Reveal>
             <SectionLabel>Энциклопедия</SectionLabel>
-            <h1 className="mt-3 font-display text-5xl font-semibold leading-[1.05] tracking-tight text-forest-900 lg:text-6xl">
+            <h1 className="mt-3 font-display text-5xl font-semibold leading-[1.05] tracking-tight text-mist lg:text-6xl">
               Растения, которые{" "}
               <span className="accent-underline">мы любим</span>
             </h1>
-            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-forest-700/85">
+            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-mist/72">
               Каталог растений, которые мы используем в проектах — проверенные в
               нашем климате, с честными характеристиками по свету, уходу и
               зимостойкости. Выбирайте по категории и сезону декоративности.

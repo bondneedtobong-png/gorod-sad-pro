@@ -88,12 +88,12 @@ interface LayerCfg {
 }
 
 const LAYERS: LayerCfg[] = [
-  // дальний план — мельче, бледнее, холоднее
-  { count: 30, hMin: 26, hMax: 48, wMin: 7, wMax: 11, lean: 6, ampMin: 1, ampMax: 2, day: "#274730", night: "#101F14", dayOpacity: 0.55, nightOpacity: 0.65, wheatRatio: 0 },
+  // дальний план — мельче, бледнее, глубже (тёмная тема)
+  { count: 30, hMin: 26, hMax: 48, wMin: 7, wMax: 11, lean: 6, ampMin: 1, ampMax: 2, day: "#0A4E3D", night: "#06281F", dayOpacity: 0.6, nightOpacity: 0.7, wheatRatio: 0 },
   // средний план
-  { count: 26, hMin: 44, hMax: 74, wMin: 9, wMax: 14, lean: 9, ampMin: 1.6, ampMax: 2.8, day: "#3A6240", night: "#1A3020", dayOpacity: 0.85, nightOpacity: 0.85, wheatRatio: 0.1 },
-  // передний план — выше, сочнее, с тёплыми акцентами
-  { count: 22, hMin: 70, hMax: 112, wMin: 11, wMax: 18, lean: 13, ampMin: 2.4, ampMax: 3.8, day: "#5F8466", night: "#274730", dayOpacity: 1, nightOpacity: 0.95, wheatRatio: 0.18 },
+  { count: 26, hMin: 44, hMax: 74, wMin: 9, wMax: 14, lean: 9, ampMin: 1.6, ampMax: 2.8, day: "#0B6B4F", night: "#0A4E3D", dayOpacity: 0.85, nightOpacity: 0.85, wheatRatio: 0.1 },
+  // передний план — выше, сочнее, с бирюзовыми акцентами
+  { count: 22, hMin: 70, hMax: 112, wMin: 11, wMax: 18, lean: 13, ampMin: 2.4, ampMax: 3.8, day: "#16A085", night: "#0B6B4F", dayOpacity: 0.95, nightOpacity: 0.9, wheatRatio: 0.18 },
 ];
 
 /** Генерируем травинки один раз (детерминированно). */
@@ -112,8 +112,8 @@ function buildBlades(): Blade[] {
 
       blades.push({
         d: bladePath(x, h, w, lean),
-        dayColor: isWheat ? "#D9C77A" : layer.day,
-        nightColor: isWheat ? "#7E7448" : layer.night,
+        dayColor: isWheat ? "#2EE6CD" : layer.day,
+        nightColor: isWheat ? "#16A085" : layer.night,
         dayOpacity: isWheat ? 0.9 : layer.dayOpacity,
         nightOpacity: isWheat ? 0.7 : layer.nightOpacity,
         amp: layer.ampMin + rnd() * (layer.ampMax - layer.ampMin),
@@ -179,12 +179,12 @@ export function GrassField({ className, night = false }: GrassFieldProps) {
           <linearGradient id="grass-ground" x1="0" y1="1" x2="0" y2="0">
             <stop
               offset="0%"
-              stopColor={night ? "#0C1810" : "#DEE9C2"}
-              stopOpacity={night ? 0.85 : 0.95}
+              stopColor={night ? "#03190F" : "#04221B"}
+              stopOpacity={night ? 0.9 : 0.9}
             />
             <stop
               offset="100%"
-              stopColor={night ? "#0C1810" : "#DEE9C2"}
+              stopColor={night ? "#03190F" : "#04221B"}
               stopOpacity="0"
             />
           </linearGradient>
@@ -202,8 +202,8 @@ export function GrassField({ className, night = false }: GrassFieldProps) {
               cx={s.cx}
               cy={s.cy}
               r={s.r}
-              fill={night ? "#E5D998" : "#EDE4B5"}
-              opacity={night ? 0.5 : 0.35}
+              fill={night ? "#67F0DD" : "#A6F7EC"}
+              opacity={night ? 0.5 : 0.4}
               style={
                 {
                   "--spore-dur": `${s.dur}s`,

@@ -22,8 +22,8 @@ export function AccountNav({ isAdmin, name }: { isAdmin: boolean; name: string }
   return (
     <nav className="space-y-1 lg:sticky lg:top-24">
       <div className="mb-4 px-3">
-        <div className="text-xs uppercase tracking-[0.18em] text-forest-500">Кабинет</div>
-        <div className="mt-0.5 truncate font-display text-lg text-forest-900">{name}</div>
+        <div className="text-xs uppercase tracking-[0.18em] text-mist/50">Кабинет</div>
+        <div className="mt-0.5 truncate font-display text-lg text-mist">{name}</div>
       </div>
 
       {items.map(({ href, label, icon: Icon, exact }) => (
@@ -33,8 +33,8 @@ export function AccountNav({ isAdmin, name }: { isAdmin: boolean; name: string }
           className={cn(
             "flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition",
             isActive(href, exact)
-              ? "bg-wheat-500/20 font-medium text-forest-900"
-              : "text-forest-700 hover:bg-forest-100",
+              ? "bg-aqua-400/15 font-medium text-aqua-400 ring-1 ring-aqua-400/25"
+              : "text-mist/70 hover:bg-white/5",
           )}
         >
           <Icon className="h-4 w-4" /> {label}
@@ -44,7 +44,7 @@ export function AccountNav({ isAdmin, name }: { isAdmin: boolean; name: string }
       {isAdmin && (
         <Link
           href="/admin"
-          className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-forest-700 transition hover:bg-forest-100"
+          className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-mist/70 transition hover:bg-white/5"
         >
           <ShieldCheck className="h-4 w-4" /> Админка
         </Link>
@@ -53,7 +53,7 @@ export function AccountNav({ isAdmin, name }: { isAdmin: boolean; name: string }
       <button
         type="button"
         onClick={() => signOut({ callbackUrl: "/" })}
-        className="mt-2 flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-forest-600 transition hover:bg-forest-100"
+        className="mt-2 flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-mist/60 transition hover:bg-white/5"
       >
         <LogOut className="h-4 w-4" /> Выйти
       </button>

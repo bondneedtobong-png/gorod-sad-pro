@@ -43,7 +43,7 @@ export function PasswordForm({ hasPassword }: { hasPassword: boolean }) {
           {busy ? "Сохраняем…" : hasPassword ? "Сменить пароль" : "Задать пароль"}
         </button>
         {msg && (
-          <span className={msg.ok ? "text-sm text-forest-600" : "text-sm text-red-700"}>{msg.text}</span>
+          <span className={msg.ok ? "text-sm text-aqua-400" : "text-sm text-red-400"}>{msg.text}</span>
         )}
       </div>
     </form>

@@ -1,10 +1,12 @@
 import type { Config } from "tailwindcss";
 
 /**
- * Город-сад — палитра.
- * Светлая тёплая тема «шалфей + крем»: светлый фон, тёмно-зелёный текст,
- * пшеничные (wheat) акценты. Forest-шкала расширена светлыми ступенями
- * (50–200) для светлых поверхностей и карточек.
+ * Город-сад — палитра (редизайн 2026, бренд-гайд Claude Design).
+ * Тёмная тема «хвоя + изумруд + бирюза», снятая с фирменной фотографии:
+ *   pine    — фон и глубокие поверхности;
+ *   emerald — карточки/секции;
+ *   aqua    — ЕДИНСТВЕННЫЙ акцент (CTA, ссылки, активные состояния);
+ *   mist    — текст на тёмном.
  */
 const config: Config = {
   content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./lib/**/*.{ts,tsx}"],
@@ -16,43 +18,45 @@ const config: Config = {
     },
     extend: {
       colors: {
-        forest: {
-          DEFAULT: "#2D4D2F",
-          900: "#15281A",
-          800: "#1E3923",
-          700: "#274730",
-          600: "#2D4D2F",
-          500: "#3A6240",
-          400: "#5F8466",
-          300: "#8DA993",
-          200: "#B7CBBB",
-          100: "#D8E4DA",
-          50: "#EEF3EC",
+        pine: {
+          DEFAULT: "#063D30",
+          950: "#04221B", // основной фон
+          900: "#063D30",
+          800: "#0A4E3D",
+          700: "#0B6B4F",
         },
-        wheat: {
-          DEFAULT: "#D9C77A",
-          700: "#9A8748",
-          600: "#B8A35F",
-          500: "#D9C77A",
-          400: "#E5D998",
-          300: "#EDE4B5",
+        emerald: {
+          DEFAULT: "#10805F",
+          600: "#10805F",
+          500: "#16A085",
         },
-        cream: "#F4EDD8",
-        // Светло-зелёная («салатовая») база темы.
-        canvas: "#DEE9C2",
-        canvas2: "#E8F1D6",
-        paper: "#F1F6E6",
-        sand: "#E9E1CC",
-        bark: "#1A2D1B",
+        aqua: {
+          DEFAULT: "#2EE6CD", // акцент
+          400: "#2EE6CD",
+          300: "#67F0DD",
+          200: "#A6F7EC",
+        },
+        mist: "#EAF5F0", // текст на тёмном
+        ink: "#03190F", // самый тёмный (футер/код)
       },
       fontFamily: {
-        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
-        display: ["var(--font-display)", "Georgia", "serif"],
+        sans: ["var(--font-sans)", "system-ui", "sans-serif"], // Manrope
+        display: ["var(--font-display)", "sans-serif"], // Unbounded
+      },
+      backgroundImage: {
+        // Градиенты бренд-гайда (см. handoff/tailwind.tokens.ts).
+        "gs-aurora": "linear-gradient(135deg, #04221B 0%, #0B6B4F 55%, #2EE6CD 130%)",
+        "gs-fresh": "linear-gradient(135deg, #10805F, #2EE6CD)",
+        "gs-glow":
+          "radial-gradient(circle at 72% 28%, rgba(46,230,205,.5), transparent 58%), linear-gradient(160deg, #063D30, #04221B)",
+        "gs-depth": "linear-gradient(160deg, #063D30, #04221B)",
+        // Карточки услуг/преимуществ: мягкий бирюзовый блик + изумрудная глубина.
+        "gs-card":
+          "radial-gradient(circle at 80% 16%, rgba(46,230,205,.14), transparent 56%), linear-gradient(160deg, #0A4E3D, #063D30)",
       },
       boxShadow: {
-        "wheat-glow": "0 0 32px -8px rgba(217, 199, 122, 0.45)",
-        leaf: "0 8px 28px -10px rgba(21, 40, 26, 0.6)",
-        card: "0 16px 44px -24px rgba(21, 40, 26, 0.45)",
+        "aqua-glow": "0 8px 32px -8px rgba(46, 230, 205, 0.55)",
+        card: "0 24px 60px -30px rgba(0, 0, 0, 0.6)",
       },
     },
   },

@@ -50,8 +50,8 @@ export function LeadForm({
   if (done) {
     return (
       <div className={`${cardClass} ${className ?? ""}`}>
-        <div className="font-display text-2xl text-forest-900">Спасибо, заявка принята! 🌿</div>
-        <p className="mt-2 text-forest-700/90">
+        <div className="font-display text-2xl text-mist">Спасибо, заявка принята! 🌿</div>
+        <p className="mt-2 text-mist/72">
           Алексей Юрьевич перезвонит в ближайшее время. Если вы вошли в аккаунт —
           заявка появилась в разделе «Мои заявки».
         </p>
@@ -75,14 +75,14 @@ export function LeadForm({
         <label className={labelClass} htmlFor="lead-msg">Сообщение</label>
         <textarea id="lead-msg" rows={3} value={message} onChange={(e) => setMessage(e.target.value)} className={`${inputClass} resize-none`} placeholder="Коротко об участке и пожеланиях" />
       </div>
-      <label className="flex items-start gap-2.5 text-xs leading-relaxed text-forest-600">
-        <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="mt-0.5 h-4 w-4 shrink-0 accent-wheat-600" />
+      <label className="flex items-start gap-2.5 text-xs leading-relaxed text-mist/60">
+        <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="mt-0.5 h-4 w-4 shrink-0 accent-aqua-400" />
         <span>
           Я согласен на обработку персональных данных согласно{" "}
-          <Link href="/privacy" className="text-wheat-700 hover:underline" target="_blank">политике конфиденциальности</Link>.
+          <Link href="/privacy" className="text-aqua-400 hover:underline" target="_blank">политике конфиденциальности</Link>.
         </span>
       </label>
-      {error && <p className="text-sm font-medium text-red-700">{error}</p>}
+      {error && <p className="text-sm font-medium text-red-400">{error}</p>}
       <button type="submit" disabled={busy} className={primaryBtn}>
         {busy ? "Отправляем…" : "Оставить заявку"}
       </button>

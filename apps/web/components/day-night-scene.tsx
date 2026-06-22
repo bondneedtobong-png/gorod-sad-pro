@@ -44,7 +44,7 @@ export function DayNightScene() {
     <div
       className={cn(
         "relative overflow-hidden rounded-3xl ring-1",
-        night ? "ring-wheat-500/25" : "ring-forest-200/70",
+        night ? "ring-aqua-400/25" : "ring-white/10",
         "shadow-card",
         reduced ? "" : "transition-[box-shadow] duration-700",
       )}
@@ -55,8 +55,8 @@ export function DayNightScene() {
         className={cn("absolute inset-0", t)}
         style={{
           background: night
-            ? "linear-gradient(to bottom, #081726 0%, #0C1810 55%, #15281A 100%)"
-            : "linear-gradient(to bottom, #6E9A86 0%, #A9C3A0 46%, #EDE4B5 100%)",
+            ? "linear-gradient(to bottom, #04121F 0%, #04221B 55%, #063D30 100%)"
+            : "linear-gradient(to bottom, #16A085 0%, #0B6B4F 48%, #063D30 100%)",
         }}
       />
 
@@ -69,7 +69,7 @@ export function DayNightScene() {
         {STARS.map((st, i) => (
           <span
             key={i}
-            className={cn("absolute rounded-full bg-cream", !reduced && "star-twinkle")}
+            className={cn("absolute rounded-full bg-mist", !reduced && "star-twinkle")}
             style={
               {
                 top: `${st.top}%`,
@@ -136,8 +136,8 @@ export function DayNightScene() {
               }}
             />
             {/* стойка */}
-            <div className="h-20 w-[3px] bg-bark/80" />
-            <div className="h-1.5 w-5 rounded-sm bg-bark/80" />
+            <div className="h-20 w-[3px] bg-pine-950/80" />
+            <div className="h-1.5 w-5 rounded-sm bg-pine-950/80" />
           </div>
         </div>
       ))}
@@ -154,12 +154,12 @@ export function DayNightScene() {
         onClick={() => setNight((v) => !v)}
         aria-pressed={night}
         aria-label={night ? "Включить день" : "Включить ночь"}
-        className="group absolute left-6 top-6 z-20 inline-flex items-center gap-2 rounded-full border border-cream/30 bg-black/25 px-2 py-2 backdrop-blur-md transition hover:border-wheat-400/60"
+        className="group absolute left-6 top-6 z-20 inline-flex items-center gap-2 rounded-full border border-white/30 bg-black/30 px-2 py-2 backdrop-blur-md transition hover:border-aqua-400/60"
       >
         <span
           className={cn(
             "grid h-8 w-8 place-items-center rounded-full transition",
-            !night ? "bg-wheat-500 text-bark" : "text-cream/60",
+            !night ? "bg-aqua-400 text-pine-950" : "text-mist/60",
           )}
         >
           <Sun className="h-4 w-4" />
@@ -167,7 +167,7 @@ export function DayNightScene() {
         <span
           className={cn(
             "grid h-8 w-8 place-items-center rounded-full transition",
-            night ? "bg-cream text-bark" : "text-cream/60",
+            night ? "bg-mist text-pine-950" : "text-mist/60",
           )}
         >
           <Moon className="h-4 w-4" />
@@ -176,15 +176,15 @@ export function DayNightScene() {
 
       {/* контент + связь с услугой освещения */}
       <div className="absolute inset-x-0 bottom-0 z-20 p-6 lg:p-8">
-        <div className="text-xs uppercase tracking-[0.22em] text-wheat-300">
+        <div className="text-xs uppercase tracking-[0.22em] text-aqua-400">
           · Ландшафтное освещение
         </div>
-        <h3 className="mt-1 max-w-lg font-display text-2xl font-semibold text-cream lg:text-3xl">
+        <h3 className="mt-1 max-w-lg font-display text-2xl font-semibold text-mist lg:text-3xl">
           {night ? "Сад продолжается и после заката" : "Нажмите луну — и сад оживёт ночью"}
         </h3>
         <Link
           href="/services/lighting"
-          className="mt-4 inline-flex items-center gap-2 rounded-full bg-wheat-500 px-5 py-2.5 text-sm font-medium text-bark shadow-wheat-glow transition hover:bg-wheat-400"
+          className="mt-4 inline-flex items-center gap-2 rounded-full bg-gs-fresh px-5 py-2.5 text-sm font-semibold text-pine-950 shadow-aqua-glow transition hover:brightness-110"
         >
           Подробнее об освещении <ArrowRight className="h-4 w-4" />
         </Link>

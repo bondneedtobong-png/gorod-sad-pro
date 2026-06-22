@@ -1,4 +1,4 @@
-import { ArrowRight, Calculator, Leaf, MessageCircle, Phone, Sparkles } from "lucide-react";
+import { ArrowRight, Calculator, Leaf, MessageCircle, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -42,8 +42,8 @@ export default function HomePage() {
       <SiteHeader />
 
       {/* ===== Hero ===== */}
-      <section className="relative isolate overflow-hidden border-b border-forest-200/70">
-        {/* фон: фото + параллакс + тонировка + частицы */}
+      <section className="relative isolate overflow-hidden border-b border-white/[0.07]">
+        {/* фон: фото + параллакс + тёмная тонировка + aurora + частицы */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
           <Parallax speed={0.14} className="absolute inset-x-0 -top-[20%] h-[140%]">
             <Image
@@ -56,10 +56,15 @@ export default function HomePage() {
               style={{ filter: "blur(2px)", transform: "scale(1.06)" }}
             />
           </Parallax>
-          <div className="absolute inset-0 bg-forest-500/12" />
-          <div className="absolute inset-0 bg-gradient-to-r from-canvas via-canvas/85 to-canvas/25" />
-          <div className="absolute inset-0 bg-gradient-to-t from-canvas via-transparent to-canvas/30" />
-          <AmbientParticles mode="day" />
+          {/* затемнение фото под тёмную тему */}
+          <div className="absolute inset-0 bg-pine-950/55" />
+          <div className="absolute inset-0 bg-gradient-to-r from-pine-950 via-pine-950/85 to-pine-950/25" />
+          <div className="absolute inset-0 bg-gradient-to-t from-pine-950 via-transparent to-pine-950/55" />
+          {/* aurora-тон бренда */}
+          <div className="absolute inset-0 bg-gs-aurora opacity-30 mix-blend-screen" />
+          {/* бирюзовый ореол */}
+          <div className="aqua-aura absolute -right-24 top-[-10%] h-[460px] w-[460px] blur-2xl" />
+          <AmbientParticles mode="night" />
         </div>
         {/* трава у основания (Задача 1) */}
         <GrassField className="pointer-events-none absolute inset-x-0 bottom-0 -z-10" />
@@ -67,11 +72,11 @@ export default function HomePage() {
         <div className="container relative z-10 grid gap-12 py-20 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:py-28">
           <Reveal className="space-y-6">
             <SectionLabel>Ландшафтное бюро · Ульяновск</SectionLabel>
-            <h1 className="font-display text-5xl font-semibold leading-[1.04] tracking-tight text-forest-900 lg:text-7xl">
-              Сад мечты <span className="accent-underline">от идеи</span>
+            <h1 className="font-display text-5xl font-bold leading-[1.04] tracking-tight text-mist lg:text-7xl">
+              Сад мечты <span className="text-aqua-400">от идеи</span>
               <br className="hidden sm:block" /> до реализации.
             </h1>
-            <p className="max-w-xl text-lg leading-relaxed text-forest-700/90">
+            <p className="max-w-xl text-lg leading-relaxed text-mist/72">
               Проектируем, обустраиваем и поддерживаем участки под ключ. Балансируем
               стиль, эргономику и заботу о растениях — чтобы получилось красиво,
               удобно и надолго.
@@ -79,13 +84,13 @@ export default function HomePage() {
             <div className="flex flex-wrap gap-3 pt-2">
               <Link
                 href="#services"
-                className="inline-flex items-center gap-2 rounded-full bg-wheat-500 px-6 py-3 font-medium text-forest-900 shadow-wheat-glow transition hover:bg-wheat-400"
+                className="inline-flex items-center gap-2 rounded-full bg-gs-fresh px-6 py-3 font-semibold text-pine-950 shadow-aqua-glow transition hover:brightness-110"
               >
                 Посмотреть услуги <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 href="#contact"
-                className="inline-flex items-center gap-2 rounded-full border border-forest-300 bg-paper/40 px-6 py-3 font-medium text-forest-800 backdrop-blur-sm transition hover:border-wheat-600 hover:text-wheat-700"
+                className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 font-medium text-mist backdrop-blur-sm transition hover:border-aqua-400 hover:text-aqua-400"
               >
                 Бесплатная консультация
               </Link>
@@ -98,8 +103,8 @@ export default function HomePage() {
                 { node: <CountUp to={30} suffix="+" />, label: "питомников-партнёров" },
               ].map((s, i) => (
                 <div key={i}>
-                  <div className="font-display text-4xl text-forest-900">{s.node}</div>
-                  <div className="mt-1 text-[11px] uppercase leading-snug tracking-[0.12em] text-forest-600">
+                  <div className="font-display text-4xl text-aqua-400">{s.node}</div>
+                  <div className="mt-1 text-[11px] uppercase leading-snug tracking-[0.12em] text-mist/50">
                     {s.label}
                   </div>
                 </div>
@@ -111,7 +116,7 @@ export default function HomePage() {
           <Reveal delay={150} className="hidden lg:block">
             <Link
               href="/plants"
-              className="group relative block overflow-hidden rounded-[2rem] shadow-card ring-1 ring-forest-300/40"
+              className="group relative block overflow-hidden rounded-[2rem] shadow-card ring-1 ring-white/10"
             >
               <div className="relative aspect-[3/4]">
                 <Image
@@ -122,19 +127,19 @@ export default function HomePage() {
                   sizes="(min-width: 1024px) 42vw, 100vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-forest-900/80 via-forest-900/15 to-forest-900/5" />
-                <div className="absolute right-4 top-4 rounded-full bg-paper/90 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.15em] text-forest-800">
+                <div className="absolute inset-0 bg-gradient-to-t from-pine-950 via-pine-950/20 to-pine-950/5" />
+                <div className="absolute right-4 top-4 rounded-full bg-pine-950/70 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.15em] text-mist backdrop-blur-sm">
                   по Ульяновску и области
                 </div>
-                <div className="absolute inset-x-0 bottom-0 p-6 text-cream">
-                  <div className="text-[11px] uppercase tracking-[0.25em] text-wheat-300">
+                <div className="absolute inset-x-0 bottom-0 p-6 text-mist">
+                  <div className="text-[11px] uppercase tracking-[0.25em] text-aqua-400">
                     Сезон в саду
                   </div>
                   <div className="mt-1 font-display text-3xl">Глициния в перголе</div>
-                  <div className="mt-1 text-sm text-cream/80">
+                  <div className="mt-1 text-sm text-mist/80">
                     Май–июнь · аромат · вертикальное озеленение
                   </div>
-                  <div className="mt-3 inline-flex items-center gap-1.5 text-sm text-wheat-300 transition group-hover:gap-2.5">
+                  <div className="mt-3 inline-flex items-center gap-1.5 text-sm text-aqua-400 transition group-hover:gap-2.5">
                     В энциклопедию растений <ArrowRight className="h-4 w-4" />
                   </div>
                 </div>
@@ -145,14 +150,14 @@ export default function HomePage() {
       </section>
 
       {/* ===== О бюро ===== */}
-      <section className="border-b border-forest-200/70 py-20">
+      <section className="border-b border-white/[0.07] py-20">
         <div className="container grid gap-12 lg:grid-cols-2 lg:items-center">
           <Reveal className="space-y-5">
             <SectionLabel>О бюро</SectionLabel>
-            <h2 className="font-display text-4xl font-semibold leading-tight tracking-tight text-forest-900 lg:text-5xl">
+            <h2 className="font-display text-4xl font-semibold leading-tight tracking-tight text-mist lg:text-5xl">
               Бюро, в котором сад — <span className="accent-underline">ремесло</span>
             </h2>
-            <p className="text-lg leading-relaxed text-forest-700/90">
+            <p className="text-lg leading-relaxed text-mist/72">
               С 2012 года мы проектируем, обустраиваем и сопровождаем участки под
               ключ — от концепции и дендроплана до посадки и ухода в первый сезон.
               Подбираем растения, проверенные в нашем климате, и доводим каждую
@@ -161,13 +166,13 @@ export default function HomePage() {
             <div className="flex flex-wrap gap-3 pt-2">
               <Link
                 href="#services"
-                className="inline-flex items-center gap-2 rounded-full border border-forest-300 px-5 py-2.5 text-sm font-medium text-forest-800 transition hover:border-wheat-600 hover:text-wheat-700"
+                className="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-2.5 text-sm font-medium text-mist transition hover:border-aqua-400 hover:text-aqua-400"
               >
                 Наши услуги <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 href="/plants"
-                className="inline-flex items-center gap-2 rounded-full border border-forest-300 px-5 py-2.5 text-sm font-medium text-forest-800 transition hover:border-wheat-600 hover:text-wheat-700"
+                className="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-2.5 text-sm font-medium text-mist transition hover:border-aqua-400 hover:text-aqua-400"
               >
                 Энциклопедия растений
               </Link>
@@ -176,7 +181,7 @@ export default function HomePage() {
 
           <Reveal delay={150}>
             <div className="relative">
-              <div className="overflow-hidden rounded-[2rem] shadow-card ring-1 ring-forest-200/70">
+              <div className="overflow-hidden rounded-[2rem] shadow-card ring-1 ring-white/10">
                 <div className="relative aspect-[4/3]">
                   <Image
                     src={BACKGROUNDS.about}
@@ -185,13 +190,14 @@ export default function HomePage() {
                     sizes="(min-width: 1024px) 48vw, 100vw"
                     className="object-cover"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-pine-950/40 to-transparent" />
                 </div>
               </div>
-              <div className="absolute -bottom-5 -left-2 rounded-2xl bg-wheat-500 px-5 py-3 shadow-wheat-glow sm:-left-5">
-                <div className="font-display text-3xl leading-none text-forest-900">
+              <div className="absolute -bottom-5 -left-2 rounded-2xl bg-gs-fresh px-5 py-3 shadow-aqua-glow sm:-left-5">
+                <div className="font-display text-3xl leading-none text-pine-950">
                   <CountUp to={14} />
                 </div>
-                <div className="mt-1 text-[10px] uppercase tracking-[0.15em] text-forest-800/80">
+                <div className="mt-1 text-[10px] font-medium uppercase tracking-[0.15em] text-pine-950/80">
                   лет в ландшафте Ульяновска
                 </div>
               </div>
@@ -200,35 +206,35 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ===== Sandbox CTA (тёмный акцент-баннер) ===== */}
-      <section className="border-b border-forest-200/70 py-12">
+      {/* ===== Sandbox CTA (акцент-баннер) ===== */}
+      <section className="border-b border-white/[0.07] py-12">
         <div className="container">
           <Reveal>
             <Link
               href="/sandbox"
-              className="group relative block overflow-hidden rounded-3xl bg-gradient-to-r from-forest-800 via-forest-700 to-forest-800 p-8 ring-1 ring-forest-700/50 transition hover:ring-wheat-500/60 lg:p-10"
+              className="group relative block overflow-hidden rounded-3xl bg-gs-depth p-8 ring-1 ring-white/10 transition hover:ring-aqua-400/50 lg:p-10"
             >
               <div
                 aria-hidden
-                className="absolute inset-0 opacity-40 transition-opacity group-hover:opacity-60"
+                className="absolute inset-0 opacity-50 transition-opacity group-hover:opacity-80"
                 style={{
                   background:
-                    "radial-gradient(circle at 80% 50%, rgba(217,199,122,0.25), transparent 60%)",
+                    "radial-gradient(circle at 80% 50%, rgba(46,230,205,0.28), transparent 60%)",
                 }}
               />
               <div className="relative grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
                 <div>
                   <SectionLabel tone="light">новая фишка</SectionLabel>
-                  <h2 className="mt-3 font-display text-4xl font-semibold leading-tight tracking-tight text-cream lg:text-5xl">
+                  <h2 className="mt-3 font-display text-4xl font-semibold leading-tight tracking-tight text-mist lg:text-5xl">
                     Спроектируй свой сад{" "}
-                    <span className="text-wheat-400">прямо сейчас</span>
+                    <span className="text-aqua-400">прямо сейчас</span>
                   </h2>
-                  <p className="mt-3 max-w-xl text-cream/75">
+                  <p className="mt-3 max-w-xl text-mist/72">
                     Интерактивный конструктор: расставь газоны, плитку, деревья и
                     фонари, переключай сезоны и увидь стоимость в реальном времени.
                   </p>
                 </div>
-                <div className="inline-flex shrink-0 items-center gap-2 rounded-full bg-wheat-500 px-6 py-3 font-medium text-forest-900 shadow-wheat-glow transition group-hover:bg-wheat-400">
+                <div className="inline-flex shrink-0 items-center gap-2 rounded-full bg-gs-fresh px-6 py-3 font-semibold text-pine-950 shadow-aqua-glow transition group-hover:brightness-110">
                   Открыть конструктор <ArrowRight className="h-4 w-4" />
                 </div>
               </div>
@@ -238,14 +244,14 @@ export default function HomePage() {
       </section>
 
       {/* ===== Услуги ===== */}
-      <section id="services" className="border-b border-forest-200/70 py-20">
+      <section id="services" className="border-b border-white/[0.07] py-20">
         <div className="container">
           <Reveal className="mb-12 max-w-2xl">
             <SectionLabel>Направления</SectionLabel>
-            <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-forest-900 lg:text-5xl">
+            <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-mist lg:text-5xl">
               Что мы делаем
             </h2>
-            <p className="mt-3 text-forest-700/80">
+            <p className="mt-3 text-mist/70">
               Каждое направление — отдельный кейс с реальными проектами,
               калькулятором стоимости и возможностью спросить ИИ-консультанта.
             </p>
@@ -255,23 +261,23 @@ export default function HomePage() {
               <Reveal key={s.slug} delay={i * 80}>
                 <Link
                   href={`/services/${s.slug}`}
-                  className="group relative block h-full overflow-hidden rounded-3xl bg-paper p-6 shadow-card ring-1 ring-forest-200/70 transition-all duration-300 hover:-translate-y-1.5 hover:ring-wheat-500/50 hover:shadow-[0_22px_48px_-22px_rgba(21,40,26,0.5)]"
+                  className="group relative block h-full overflow-hidden rounded-3xl bg-gs-card p-6 shadow-card ring-1 ring-white/10 transition-all duration-300 hover:-translate-y-1.5 hover:ring-aqua-400/45"
                 >
-                  <div className="mb-6 inline-flex h-10 w-10 items-center justify-center rounded-full bg-wheat-500/15 ring-1 ring-wheat-500/30 transition-all duration-300 group-hover:scale-110 group-hover:bg-wheat-500/25">
-                    <Leaf className="h-5 w-5 text-wheat-700" strokeWidth={1.8} />
+                  <div className="mb-6 inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-aqua-400/15 ring-1 ring-aqua-400/30 transition-all duration-300 group-hover:scale-110 group-hover:bg-aqua-400/25">
+                    <Leaf className="h-5 w-5 text-aqua-400" strokeWidth={1.8} />
                   </div>
-                  <div className="font-display text-2xl text-forest-800 transition-colors group-hover:text-wheat-700">
+                  <div className="font-display text-2xl text-mist transition-colors group-hover:text-aqua-400">
                     {s.title}
                   </div>
-                  <div className="mt-1 text-sm text-forest-600">{s.tagline}</div>
-                  <div className="mt-6 flex flex-wrap gap-2 border-t border-forest-200/70 pt-4 text-xs">
-                    <span className="inline-flex items-center gap-1 rounded-full bg-forest-50 px-3 py-1 text-forest-600 ring-1 ring-forest-200/70">
+                  <div className="mt-1 text-sm text-mist/60">{s.tagline}</div>
+                  <div className="mt-6 flex flex-wrap gap-2 border-t border-white/10 pt-4 text-xs">
+                    <span className="inline-flex items-center gap-1 rounded-full bg-white/5 px-3 py-1 text-mist/70 ring-1 ring-white/10">
                       <Calculator className="h-3 w-3" /> калькулятор
                     </span>
-                    <span className="inline-flex items-center gap-1 rounded-full bg-forest-50 px-3 py-1 text-forest-600 ring-1 ring-forest-200/70">
+                    <span className="inline-flex items-center gap-1 rounded-full bg-white/5 px-3 py-1 text-mist/70 ring-1 ring-white/10">
                       <MessageCircle className="h-3 w-3" /> спросить ИИ
                     </span>
-                    <span className="ml-auto inline-flex items-center gap-1 text-wheat-700 opacity-0 transition group-hover:opacity-100">
+                    <span className="ml-auto inline-flex items-center gap-1 font-semibold text-aqua-400 opacity-0 transition group-hover:opacity-100">
                       Подробнее <ArrowRight className="h-3 w-3" />
                     </span>
                   </div>
@@ -283,23 +289,23 @@ export default function HomePage() {
       </section>
 
       {/* ===== Тизер энциклопедии ===== */}
-      <section className="relative isolate overflow-hidden border-b border-forest-200/70 py-20">
+      <section className="relative isolate overflow-hidden border-b border-white/[0.07] py-20">
         <PhotoBackdrop src={BACKGROUNDS.plants} blurPx={4} overlay="veil" />
         <div className="container relative z-10">
           <Reveal className="mb-10 flex flex-wrap items-end justify-between gap-6">
             <div className="max-w-2xl">
               <SectionLabel>Энциклопедия</SectionLabel>
-              <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-forest-900 lg:text-5xl">
+              <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-mist lg:text-5xl">
                 Загляните в нашу энциклопедию растений
               </h2>
-              <p className="mt-3 text-forest-700/85">
+              <p className="mt-3 text-mist/75">
                 Проверенные в нашем климате растения с честными характеристиками по
                 свету, уходу и зимостойкости — те, что мы используем в проектах.
               </p>
             </div>
             <Link
               href="/plants"
-              className="inline-flex items-center gap-2 rounded-full bg-wheat-500 px-6 py-3 font-medium text-forest-900 shadow-wheat-glow transition hover:bg-wheat-400"
+              className="inline-flex items-center gap-2 rounded-full bg-gs-fresh px-6 py-3 font-semibold text-pine-950 shadow-aqua-glow transition hover:brightness-110"
             >
               Открыть энциклопедию <ArrowRight className="h-4 w-4" />
             </Link>
@@ -309,14 +315,14 @@ export default function HomePage() {
               <Reveal key={p.slug} delay={i * 80}>
                 <Link
                   href={`/plants/${p.slug}`}
-                  className="group block h-full overflow-hidden rounded-3xl bg-paper shadow-card ring-1 ring-forest-200/70 transition-all duration-300 hover:-translate-y-1.5 hover:ring-wheat-500/50"
+                  className="group block h-full overflow-hidden rounded-3xl bg-white/[0.04] shadow-card ring-1 ring-white/10 transition-all duration-300 hover:-translate-y-1.5 hover:ring-aqua-400/45"
                 >
                   <PlantImage src={p.image} alt={p.name} className="aspect-[4/3]" />
                   <div className="p-4">
-                    <div className="font-display text-lg text-forest-800 transition-colors group-hover:text-wheat-700">
+                    <div className="font-display text-lg text-mist transition-colors group-hover:text-aqua-400">
                       {p.name}
                     </div>
-                    <div className="text-xs italic text-forest-500">{p.latin}</div>
+                    <div className="text-xs italic text-mist/45">{p.latin}</div>
                   </div>
                 </Link>
               </Reveal>
@@ -326,14 +332,14 @@ export default function HomePage() {
       </section>
 
       {/* ===== Было / Стало ===== */}
-      <section className="border-b border-forest-200/70 py-20">
+      <section className="border-b border-white/[0.07] py-20">
         <div className="container">
           <Reveal className="mb-10 max-w-2xl">
             <SectionLabel>Результат</SectionLabel>
-            <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-forest-900 lg:text-5xl">
+            <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-mist lg:text-5xl">
               Было / Стало
             </h2>
-            <p className="mt-3 text-forest-700/80">
+            <p className="mt-3 text-mist/70">
               Потяните ползунок — и голый участок превратится в готовый сад. Так
               меняются объекты после нашей работы.
             </p>
@@ -350,14 +356,14 @@ export default function HomePage() {
       </section>
 
       {/* ===== Сцена День / Ночь ===== */}
-      <section className="border-b border-forest-200/70 py-20">
+      <section className="border-b border-white/[0.07] py-20">
         <div className="container">
           <Reveal className="mb-10 max-w-2xl">
             <SectionLabel>Атмосфера</SectionLabel>
-            <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-forest-900 lg:text-5xl">
+            <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-mist lg:text-5xl">
               День сменяется ночью
             </h2>
-            <p className="mt-3 text-forest-700/80">
+            <p className="mt-3 text-mist/70">
               Хороший сад красив круглые сутки. Переключите сцену и посмотрите, как
               ландшафтное освещение продолжает сад после заката.
             </p>
@@ -369,29 +375,29 @@ export default function HomePage() {
       </section>
 
       {/* ===== Преимущества ===== */}
-      <section id="advantages" className="border-b border-forest-200/70 py-20">
+      <section id="advantages" className="border-b border-white/[0.07] py-20">
         <div className="container">
           <Reveal className="mb-12">
             <SectionLabel>Почему мы</SectionLabel>
-            <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-forest-900 lg:text-5xl">
+            <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-mist lg:text-5xl">
               Преимущества бюро
             </h2>
           </Reveal>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {advantages.map((a, i) => (
               <Reveal key={a.title} delay={i * 80}>
-                <div className="h-full rounded-3xl bg-paper p-6 shadow-card ring-1 ring-forest-200/70 transition-all duration-300 hover:-translate-y-1 hover:ring-wheat-500/50">
+                <div className="h-full rounded-3xl bg-gs-card p-6 shadow-card ring-1 ring-white/10 transition-all duration-300 hover:-translate-y-1 hover:ring-aqua-400/45">
                   {a.count != null ? (
                     <>
-                      <div className="font-display text-5xl leading-none text-forest-900">
+                      <div className="font-display text-5xl leading-none text-aqua-400">
                         <CountUp to={a.count} suffix={a.suffix} />
                       </div>
-                      <div className="mt-2 font-display text-xl text-forest-700">{a.title}</div>
+                      <div className="mt-2 font-display text-xl text-mist">{a.title}</div>
                     </>
                   ) : (
-                    <div className="font-display text-2xl text-wheat-700">{a.title}</div>
+                    <div className="font-display text-2xl text-aqua-400">{a.title}</div>
                   )}
-                  <div className="mt-2 text-sm text-forest-600">{a.desc}</div>
+                  <div className="mt-2 text-sm text-mist/60">{a.desc}</div>
                 </div>
               </Reveal>
             ))}
@@ -400,14 +406,14 @@ export default function HomePage() {
       </section>
 
       {/* ===== Заявка ===== */}
-      <section className="border-b border-forest-200/70 py-20">
+      <section className="border-b border-white/[0.07] py-20">
         <div className="container">
           <Reveal className="mb-8 max-w-2xl">
             <SectionLabel>Заявка</SectionLabel>
-            <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-forest-900 lg:text-5xl">
+            <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-mist lg:text-5xl">
               Оставьте заявку
             </h2>
-            <p className="mt-3 text-forest-700/80">
+            <p className="mt-3 text-mist/70">
               Перезвоним, бесплатно проконсультируем и предложим выезд на замер.
               Если вы вошли в аккаунт — заявка появится в личном кабинете.
             </p>
@@ -418,26 +424,26 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ===== Контакты (тёмный финал) ===== */}
+      {/* ===== Контакты (финал) ===== */}
       <section id="contact" className="py-24">
         <div className="container">
           <Reveal>
-            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-forest-800 to-forest-900 p-10 ring-1 ring-forest-700/50 lg:p-16">
+            <div className="relative overflow-hidden rounded-3xl bg-gs-depth p-10 ring-1 ring-white/10 lg:p-16">
               <div
                 aria-hidden
-                className="absolute inset-0 opacity-40"
+                className="absolute inset-0 opacity-60"
                 style={{
                   background:
-                    "radial-gradient(ellipse 60% 80% at 100% 0%, rgba(217,199,122,0.18), transparent 60%)",
+                    "radial-gradient(ellipse 60% 80% at 100% 0%, rgba(46,230,205,0.2), transparent 60%)",
                 }}
               />
               <div className="relative grid gap-10 lg:grid-cols-2">
                 <div className="space-y-4">
                   <SectionLabel tone="light">Свяжитесь</SectionLabel>
-                  <h2 className="font-display text-4xl font-semibold tracking-tight text-cream lg:text-5xl">
+                  <h2 className="font-display text-4xl font-semibold tracking-tight text-mist lg:text-5xl">
                     От идеального участка вас отделяет один шаг
                   </h2>
-                  <p className="text-cream/75">
+                  <p className="text-mist/75">
                     Оставьте телефон — Алексей Юрьевич перезвонит и предложит
                     бесплатную консультацию ведущего специалиста.
                   </p>
@@ -445,7 +451,7 @@ export default function HomePage() {
                 <div className="space-y-3">
                   <a
                     href="tel:+79370388344"
-                    className="flex items-center gap-3 rounded-2xl bg-wheat-500 px-5 py-4 font-medium text-forest-900 shadow-wheat-glow transition hover:bg-wheat-400"
+                    className="flex items-center gap-3 rounded-2xl bg-gs-fresh px-5 py-4 font-medium text-pine-950 shadow-aqua-glow transition hover:brightness-110"
                   >
                     <Phone className="h-5 w-5" />
                     <span className="flex flex-col">
@@ -457,7 +463,7 @@ export default function HomePage() {
                   </a>
                   <a
                     href="tel:+79374509900"
-                    className="flex items-center gap-3 rounded-2xl border border-wheat-500/40 px-5 py-4 font-medium text-cream transition hover:border-wheat-400 hover:text-wheat-400"
+                    className="flex items-center gap-3 rounded-2xl border border-aqua-400/40 px-5 py-4 font-medium text-mist transition hover:border-aqua-400 hover:text-aqua-400"
                   >
                     <Phone className="h-5 w-5" />
                     <span className="flex flex-col">
@@ -467,7 +473,7 @@ export default function HomePage() {
                       <span className="text-lg">8-937-450-99-00</span>
                     </span>
                   </a>
-                  <div className="rounded-2xl bg-forest-900/60 p-4 text-xs leading-relaxed text-cream/60 ring-1 ring-forest-700/50">
+                  <div className="rounded-2xl bg-white/5 p-4 text-xs leading-relaxed text-mist/60 ring-1 ring-white/10">
                     Ежедневно на связи с 8:00 до 20:00. Бесплатный выезд для замера
                     и оценки.
                   </div>

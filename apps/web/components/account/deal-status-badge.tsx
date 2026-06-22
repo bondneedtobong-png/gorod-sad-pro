@@ -1,10 +1,10 @@
 import { cn } from "@/lib/utils";
 
 const MAP: Record<string, { label: string; cls: string }> = {
-  NEW: { label: "Новая", cls: "bg-wheat-500/20 text-wheat-700 ring-wheat-500/40" },
-  IN_PROGRESS: { label: "В работе", cls: "bg-sky-500/15 text-sky-700 ring-sky-500/30" },
-  DONE: { label: "Выполнена", cls: "bg-forest-500/20 text-forest-700 ring-forest-500/40" },
-  CANCELLED: { label: "Отменена", cls: "bg-forest-200/60 text-forest-600 ring-forest-300/60" },
+  NEW: { label: "Новая", cls: "bg-aqua-400/15 text-aqua-300 ring-aqua-400/30" },
+  IN_PROGRESS: { label: "В работе", cls: "bg-sky-400/15 text-sky-300 ring-sky-400/30" },
+  DONE: { label: "Выполнена", cls: "bg-emerald-500/25 text-aqua-200 ring-emerald-500/40" },
+  CANCELLED: { label: "Отменена", cls: "bg-white/10 text-mist/50 ring-white/15" },
 };
 
 export function DealStatusBadge({ status }: { status: string }) {

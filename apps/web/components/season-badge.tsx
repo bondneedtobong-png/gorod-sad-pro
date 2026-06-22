@@ -20,13 +20,13 @@ export function SeasonBadge() {
 
   return (
     <div className="pointer-events-none fixed bottom-6 left-6 z-30 hidden lg:block">
-      <div className="pointer-events-auto flex items-center gap-2 rounded-full border border-forest-300/70 bg-paper/90 px-4 py-2 text-xs uppercase tracking-[0.2em] text-forest-600 shadow-card backdrop-blur-md">
+      <div className="pointer-events-auto flex items-center gap-2 rounded-full border border-white/12 bg-pine-900/80 px-4 py-2 text-xs uppercase tracking-[0.2em] text-mist/70 shadow-card backdrop-blur-md">
         <span className="text-base leading-none" aria-hidden style={{ animation: "season-wiggle 6s ease-in-out infinite" }}>
           {info.emoji}
         </span>
         <span>
           Сейчас в саду:{" "}
-          <span className="font-semibold text-wheat-700">{info.label}</span>
+          <span className="font-semibold text-aqua-400">{info.label}</span>
         </span>
       </div>
       <style jsx>{`

@@ -20,13 +20,13 @@ export default async function DealsPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="font-display text-3xl font-semibold tracking-tight text-forest-900">Мои заявки</h1>
+      <h1 className="font-display text-3xl font-semibold tracking-tight text-mist">Мои заявки</h1>
 
       {deals.length === 0 ? (
         <div className={cardClass}>
-          <p className="text-forest-600">
+          <p className="text-mist/60">
             Заявок пока нет. Оставьте заявку через{" "}
-            <Link href="/#contact" className="text-wheat-700 underline">форму на сайте</Link> или
+            <Link href="/#contact" className="text-aqua-400 underline">форму на сайте</Link> или
             рассчитайте стоимость на странице услуги — она появится здесь.
           </p>
         </div>
@@ -36,16 +36,16 @@ export default async function DealsPage() {
             <div key={d.id} className={cardClass}>
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <div className="font-display text-lg text-forest-900">{d.title}</div>
-                  <div className="text-xs text-forest-500">
+                  <div className="font-display text-lg text-mist">{d.title}</div>
+                  <div className="text-xs text-mist/50">
                     {new Date(d.createdAt).toLocaleDateString("ru-RU", { day: "numeric", month: "long", year: "numeric" })}
                   </div>
                 </div>
                 <DealStatusBadge status={d.status} />
               </div>
-              {d.message && <p className="mt-2 text-sm leading-relaxed text-forest-700/90">{d.message}</p>}
-              <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm text-forest-600">
-                {d.estimateRub != null && <span>Ориентировочно: <b className="text-forest-800">{formatRub(d.estimateRub)}</b></span>}
+              {d.message && <p className="mt-2 text-sm leading-relaxed text-mist/72">{d.message}</p>}
+              <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm text-mist/60">
+                {d.estimateRub != null && <span>Ориентировочно: <b className="text-mist">{formatRub(d.estimateRub)}</b></span>}
                 {d.adminNote && <span>Комментарий бюро: {d.adminNote}</span>}
               </div>
             </div>
