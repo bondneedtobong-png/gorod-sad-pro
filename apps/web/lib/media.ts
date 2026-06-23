@@ -46,8 +46,8 @@ export interface BeforeAfterCase {
  */
 export const BEFORE_AFTER_CASES: BeforeAfterCase[] = [
   {
-    before: null,
-    after: null,
-    caption: "Участок 12 соток · от голой земли до сада под ключ",
+    before: "/media/cases/before.jpg",
+    after: "/media/cases/after.jpg",
+    caption: "Участок в Ульяновске · от голой земли до газона под ключ",
   },
 ];
